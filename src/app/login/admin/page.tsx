@@ -34,7 +34,7 @@ export default function Page() {
     return (
         <>
             <div className="flex justify-center mt-5">
-                <div className="text-black ring-offset-2 py-4 px-8 pb-8 border-4 border-gray2 bg-[#151D3B] rounded w-552 md:mt-4 xl:mt-10 drop-shadow-md">
+                <div className="ring-offset-2 py-4 px-8 pb-8 border-4 border-gray2 bg-[#151D3B] rounded w-552 md:mt-4 xl:mt-10 drop-shadow-md">
 
                     <h1 className="text-center font-bold text-3xl text-white uppercase mb-2">
                         Login
@@ -49,7 +49,7 @@ export default function Page() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Email"
-                                    className="mt-4 p-2 w-full border-2 border-slate-200 placeholder-slate-400
+                                    className="text-black  mt-4 p-2 w-full border-2 border-slate-200 placeholder-slate-400
                                     contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
                                     autoComplete="username"
                                 />
@@ -59,7 +59,7 @@ export default function Page() {
                                 <input
                                     required
                                     placeholder="Password"
-                                    className="mt-2 p-2 w-full border-2 border-slate-200 placeholder-slate-400
+                                    className="text-black  mt-2 p-2 w-full border-2 border-slate-200 placeholder-slate-400
                                     contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
                                     type="password"
                                     onChange={(e) => setPassword(e.target.value)}
