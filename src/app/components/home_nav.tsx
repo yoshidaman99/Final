@@ -27,7 +27,7 @@ const Navigation: React.FC = () => {
 
   return (
     <div>
-      <nav className="flex">
+      <nav className="flex ">
         <ul className="flex space-x-4">
           {navMenu.map((menuItem, index) => (
             <li key={index}
