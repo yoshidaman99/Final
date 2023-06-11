@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Add Admin',
 };
 
-export default function Page() {
+export default function Page(): React.JSX.Element {
 
     const [fName, setFName] = useState('');
     const [lName, setLName] = useState('');
@@ -20,6 +20,7 @@ export default function Page() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [showModal, setShowModal] = useState(false);
+    const [emailError, setEmailError]= useState(false);
 
     useEffect(() => {
         if (password !== confirmPassword) {
@@ -53,8 +54,15 @@ export default function Page() {
 
     const handleModalConfirm = () => {
         setShowModal(false);
-        signup(email, password, fName, lName, jobRole, status, dept);
-        console.log('Signup Complete!');
+        try{
+          const error: Promise< 1 | undefined > = signup(email, password, fName, lName, jobRole, status, dept);
+            if(typeof error != undefined)
+              setEmailError(true);
+        }catch (error){
+          console.log(error);
+        }
+              
+       console.log('Signup Complete!');
       };
 
       const handleModalCancel = () => {
@@ -106,6 +114,7 @@ export default function Page() {
                 name="email"
                 className="p-2 w-full border-gray-300 rounded-md shadow-sm
                 focus:ring-indigo-500 focus:border-indigo-500" />
+                 {emailError && <p className="text-red-500 mt-2 text-sm ml-1">Invalid email</p>}
                 </div>
 
                 <div className="mb-4">
