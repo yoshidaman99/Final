@@ -31,13 +31,13 @@ export default function studentLogin() {
                 required
                 autoComplete="new-password"
                 placeholder="Password"
-                className="mt-2 p-2 w-full border-2 border-slate-200 placeholder-slate-400
+                className="text-black mt-2 p-2 w-full border-2 border-slate-200 placeholder-slate-400
                 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"/>
                 </label>
 
                 <button
                 className="mt-5 middle none w-full center mr-4 bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase
-                 text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-800/40 hover:bg-green-700
+                 text-black shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-800/40 hover:bg-green-700
                  focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none
                  disabled:opacity-50 disabled:shadow-none"
                 data-ripple-light="true" >

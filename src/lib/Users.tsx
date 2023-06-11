@@ -73,10 +73,14 @@ export const UserProvider = ({ children }: { children: any }) => {
     const auth = getAuth();
     const app = initFirebase();
 
-  async function login(email: string, password: string): Promise<"Invalid email or password" | undefined> {
+  const login  = async (email: string, password: string) => {
     try {
+      console.log(auth);
+      console.log(password);
       const userCredential: UserCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+
+      console.log("sdasdas");
 
       if (user) {
         const id: string = user.uid;
@@ -113,12 +117,16 @@ export const UserProvider = ({ children }: { children: any }) => {
         }
       }
     } catch (error) {
+      console.log(error);
       return "Invalid email or password";
+      
     }
   }
 
       const loginID = async (email : string, password : string)=>{
+        
         try{
+          
             const userCredential: UserCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
@@ -335,7 +343,7 @@ export const UserProvider = ({ children }: { children: any }) => {
      }
 
     return(
-        <UserContext.Provider value={{ user, loading, login, loginID, logout, signup, addRequest, getUserName, addComment, getComment, delComment, archiveComment }}>
+        <UserContext.Provider value={{ user, login,loading, loginID, logout, signup, addRequest, getUserName, addComment, getComment, delComment, archiveComment }}>
             {children}
         </UserContext.Provider>
     );

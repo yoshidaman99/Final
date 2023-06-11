@@ -1,16 +1,13 @@
 'use client'
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import { initFirebase } from '@/firebase/firebaseApp';
 import { getAuth  } from "firebase/auth";
-import { useUser } from '@/lib/Users';
+import { login } from '@/lib/login';
 
-
-export default function Page() {
+const LoginAdminPage: React.FC = () => {
 
     const app = initFirebase();
     const auth = getAuth();
-
-    const { login } = useUser();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,24 +19,24 @@ export default function Page() {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        try {
-           const error = await login(email, password);
-           if (isString(error))
-           setError('Invalid email or password');
+
+        try {       
+           login(email, password);
         } catch (error) {
+            setError('Invalid email or password');
             console.error(error);
         }
     };
 
     return (
         <>
-            <div className="flex justify-center mt-5">
-                <div className="ring-offset-2 py-4 px-8 pb-8 border-4 border-gray2 bg-[#151D3B] rounded w-552 md:mt-4 xl:mt-10 drop-shadow-md">
+            <div  className="flex justify-center mt-5">
+                <div  className="ring-offset-2 py-4 px-8 pb-8 border-4 border-gray2 bg-[#151D3B] rounded w-552 md:mt-4 xl:mt-10 drop-shadow-md">
 
                     <h1 className="text-center font-bold text-3xl text-white uppercase mb-2">
                         Login
                     </h1>
-                    <div className="border-t-2 border-gray-500">
+                    <div suppressHydrationWarning={true} data-cjcrx="some-value"  className="border-t-2 border-gray-500">
 
                         <form onSubmit={handleLogin}>
                             <label className="block">
@@ -91,3 +88,5 @@ export default function Page() {
         </>
     )
 }
+
+export default LoginAdminPage as () => never;
