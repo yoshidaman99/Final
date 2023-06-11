@@ -39,7 +39,7 @@ const Layout: NextPage<PageProps> = ({ children }) => {
             <div>
                 <Sidebar role={`${Role.level}`} />
             </div>
-            <div className="bg-blue-200 flex-1 z-0 h-fit min-h-screen pb-14">
+            <div className=" bg-slate-900 flex-1 z-0 h-fit min-h-screen pb-14">
               {children}
             </div>
         </div>
