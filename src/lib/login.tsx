@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import {
   getAuth,
   UserCredential,
@@ -10,7 +9,6 @@ import {
   where,
   getDocs,
   collection,
-
 } from 'firebase/firestore';
 import Cookies from 'universal-cookie';
 

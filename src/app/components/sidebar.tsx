@@ -1,7 +1,7 @@
 
 
 'use client';
-import { useUser } from '@/lib/Users';
+import { logout } from '@/lib/logout'
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import {
@@ -9,8 +9,6 @@ import {
   BsMessenger,
   BsLayoutSidebarInset,
   BsFillFilePersonFill,
-  BsFillBellFill,
-  BsFillGearFill,
   BsFillReplyFill,
   BsArrowLeftShort,
   BsFillDashSquareFill,
@@ -19,13 +17,11 @@ import {
 import {
   HiOutlineUserPlus,
   HiOutlineUsers,
-  HiOutlinePencilSquare,
-  HiBarsArrowDown,
-  HiOutlineChatBubbleLeftRight,
   HiOutlineQueueList,
   HiOutlineRectangleGroup,
   HiOutlineSparkles,
   HiOutlineNewspaper,
+  HiBarsArrowDown,
   HiOutlineUserCircle,
   HiOutlineUserGroup,
 } from 'react-icons/hi2';
@@ -49,8 +45,6 @@ const Sidebar: React.FC<LvlRole> = ({ role }) => {
   const handle2ToggleSidebar = (index: any) => {
     setSubmenuOpen(submenuOpen === index ? null : index);
   };
-
-  const {logout} = useUser();
 
   const handleLogout = async () => {
         await logout();
