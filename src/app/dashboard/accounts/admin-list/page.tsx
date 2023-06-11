@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 
 export default function adminList(): React.JSX.Element {
 
-
     return (
         <>
         <div>

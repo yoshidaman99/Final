@@ -1,12 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { Metadata } from 'next';
 import HeaderInfo from '@/app/components/header_info';
 import { signup } from '@/lib/signup';
 
-export const metadata: Metadata = {
-    title: 'Add Admin',
-};
 
 export default function Page(): React.JSX.Element {
 
@@ -86,7 +82,7 @@ export default function Page(): React.JSX.Element {
         <>
         <section>
           <div>
-            <HeaderInfo title={metadata.title != null ? metadata.title.toString() : ''} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
+            <HeaderInfo title='' bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
           </div>
         </section>
 

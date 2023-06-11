@@ -18,8 +18,6 @@ const Layout: NextPage<PageProps> = ({ children }) => {
     const router = useRouter();
     const [open, setOpen] = useState(true);
 
-    console.log(user)
-
     useEffect(() => {
       if (!storedUser) {
         router.push('/login/student');
