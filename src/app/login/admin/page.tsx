@@ -34,7 +34,7 @@ export default function Page() {
     return (
         <>
             <div className="flex justify-center mt-5">
-                <div className="ring-offset-2 py-4 px-8 pb-8 border-4 border-gray2 bg-[#151D3B] rounded w-552 md:mt-4 xl:mt-10 drop-shadow-md">
+                <div className="text-black ring-offset-2 py-4 px-8 pb-8 border-4 border-gray2 bg-[#151D3B] rounded w-552 md:mt-4 xl:mt-10 drop-shadow-md">
 
                     <h1 className="text-center font-bold text-3xl text-white uppercase mb-2">
                         Login
