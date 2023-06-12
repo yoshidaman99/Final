@@ -20,12 +20,15 @@ const LoginAdminPage: React.FC = () => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        try {       
-           login(email, password);
-        } catch (error) {
+        try {
+            const str = await login(email, password);
+            if (typeof str === 'string') {
+              setError('Invalid email or password');
+            }
+          } catch (error) {
             setError('Invalid email or password');
             console.error(error);
-        }
+          }
     };
 
     return (

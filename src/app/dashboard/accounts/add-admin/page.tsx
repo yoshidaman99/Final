@@ -102,6 +102,7 @@ export default function Page(): React.JSX.Element {
                 className="p-2  block text-gray-700 font-medium mb-1">Email</label>
                 <input
                 required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 type="email"
                 placeholder='Email...'
                 value={email}
