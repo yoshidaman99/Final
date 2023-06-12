@@ -1,12 +1,8 @@
 'use client'
 import React, { useState } from 'react';
-import { Metadata } from 'next';
 import HeaderInfo from '@/app/components/header_info';
 import { addRequest } from '@/lib/addRequest';
 
-export const metadata: Metadata = {
-  title: 'Create Request',
-};
 
 export default function CreateRequest(): React.JSX.Element {
   const requestList = [
@@ -58,7 +54,7 @@ export default function CreateRequest(): React.JSX.Element {
   return (
     <section>
       <div>
-        <HeaderInfo title={metadata.title != null ? metadata.title.toString() : ''} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
+        <HeaderInfo title={'Create Request'} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
       </div>
     <form onSubmit={handleAddRequest}>
       <div className='w-full p-5 text-slate-900'>
