@@ -21,12 +21,7 @@ export const login  = async (email: string, password: string) => {
     const cookie = new Cookies();
     const auth = getAuth();
 
-    console.log(auth);
-    console.log(password);
-
     try {
-      console.log(auth);
-      console.log(password);
       const userCredential: UserCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
