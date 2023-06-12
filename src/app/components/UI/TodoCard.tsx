@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { DraggableProvidedDragHandleProps, DraggableProvidedDraggableProps } from 'react-beautiful-dnd';
 import { Bs0Square, Bs8SquareFill, BsBagCheck, BsChatSquare, BsCloudArrowDown, BsCode, BsSquareFill, BsXCircle } from 'react-icons/bs';
 import { useBoardStore } from '@/store/BoardStore';
-import { useUser } from '@/lib/Users';
+import {  getUserName, addComment, delComment, archiveComment, getComment } from '@/lib/todoAccess';
 
 type Props = {
   todo: Todo;
@@ -31,10 +31,7 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
   const [showConfirmation2, setShowConfirmation2] = useState(false);
   const [showConfirmation3, setShowConfirmation3] = useState(false);
   const [userName, setUserName] = useState('');
-  const { getUserName, addComment } = useUser();
-  const { getComment } = useUser();
-  const {delComment} = useUser();
-  const {archiveComment} = useUser();
+
   const [message, setMessage] = useState('');
   const [role, setRole] = useState('');
   const [_id, set_id] = useState('');
@@ -91,7 +88,7 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
   };
 
   const handleComment = async (id: string) => {
-    const commentsData = await getComment(id);
+    const commentsData : any = await getComment(id);
     if (commentsData) {
       setComments(commentsData);
     }
