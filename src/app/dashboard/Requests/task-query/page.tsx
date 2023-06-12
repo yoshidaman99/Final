@@ -1,16 +1,11 @@
 "use client"
 import { useEffect } from 'react';
-import { Metadata } from 'next';
 import HeaderInfo from '@/app/components/header_info';
 import { useBoardStore } from '@/store/BoardStore';
 import { DragDropContext, DropResult, Draggable, Droppable } from 'react-beautiful-dnd';
 import Column from '@/app/components/UI/columns';
 import SearchBar from '@/app/components/UI/search';
 
-
-export const metadata: Metadata = {
-  title: 'Query Task',
-};
 
 export default function Page() {
   const [board, getBoard, setBoardState, updateTodoInDB] = useBoardStore((state) => [
@@ -103,7 +98,7 @@ export default function Page() {
       return (
         <section>
           <div>
-            <HeaderInfo title={metadata.title != null ? metadata.title.toString() : ''} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
+            <HeaderInfo title={'Query Task'} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
           </div>
           <div className='flex w-full items-center justify-center'>
             <div className='w-1/3'>
