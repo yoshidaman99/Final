@@ -1,7 +1,7 @@
 import { getFirestore, collection, query, where, addDoc , updateDoc, deleteDoc, doc } from 'firebase/firestore';
 import { getStorage, ref, deleteObject } from 'firebase/storage';
 import { create } from 'zustand';
-import { initFirebase } from '@/app/firebase/firebaseApp';
+import { initFirebase } from '@/firebase/firebaseApp';
 import { getTodosGroupedByColumn } from '@/lib/getTodosGroupedByColumn';
 
 
