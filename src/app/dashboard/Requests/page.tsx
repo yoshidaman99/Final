@@ -1,31 +1,36 @@
 'use client'
 import HeaderInfo from '@/app/components/header_info';
 import { RequestList } from '@/lib/getRequestListPersonal';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 
-export default async function Request() {
-  const [User, setUser] = useState('');
-  const cookies : any = useCookies(['user']);
+export default function Request() {
+  const [cookies] = useCookies(['user']);
+  const userID = cookies.user ? cookies.user.id : null;
+  const [requestList, setRequestList] = useState([]);
 
   useEffect(() => {
-    const userID = getUserIDFromArray(cookies);
-    setUser(userID);
-    console.log(userID)
-  }, [cookies]);
+    // Perform any client-side actions or side effects here
+    // This code will only run once when the component mounts
+    // Add any necessary logic or additional requests if needed
 
-  function getUserIDFromArray(cookies: any) {
-    for (let i = 0; i < cookies.length; i++) {
-      const object = cookies[i];
-      if (object.hasOwnProperty('user')) {
-        const user = object.user;
-        if (user.hasOwnProperty('id')) {
-          return user.id;
-        }
+    // Example: Fetch request list data and update state
+    const fetchData = async () => {
+      try {
+        // Make API request to fetch request list data based on userID
+        
+        const data : any = RequestList(cookies);
+
+        // Set the fetched request list data to the state
+        setRequestList(data);
+      } catch (error) {
+        console.error('Error fetching request list:', error);
       }
-    }
-    return null;
-  }
+    };
+
+    // Call the fetchData function to fetch request list data
+    fetchData();
+  }, [cookies, userID]);
 
   return (
     <section>
@@ -34,7 +39,7 @@ export default async function Request() {
       </div>
 
       <div className='h-7 w-full bg-slate-50'>
-
+        {requestList}
       </div>
     </section>
   );

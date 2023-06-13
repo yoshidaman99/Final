@@ -53,8 +53,6 @@ export default function Page(): React.JSX.Element {
             <HeaderInfo title='Admin List' bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
         </div>
 
-
-
         <div className='p-8 ring-2 mt-5 bg-slate-100 rounded-md w-3/4 ml-auto mr-auto'>
         <h1 className=' text-xl font-semibold mb-2 border-b-2 pb-2 text-slate-800 '> Change Password </h1>
         <div className="mb-4">
