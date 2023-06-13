@@ -141,7 +141,7 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
     <div className="bg-white space-y-2 drop-shadow-sm" {...draggableProps} {...dragHandleProps} ref={innerRef}>
 
       <div className={`${open ? 'min:h-72' : 'h-10'} z-0`} >
-        <div>
+        <div className='px-2'>
           <div className="flex justify-between items-center bg-slate-50/80 p-2 border-slate-400 border-t-2 h-10">
             <span>
               <div className="text-slate-600">{todo.type_Request}</div>
@@ -172,7 +172,7 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
         </div>
         {open && (
           <>
-            <div className='w-full h-44 z-10 mt-2 text-black'>
+            <div className='w-full h-44 z-10 mt-2 px-2 text-black'>
               <h3 className='mb-2 font-semibold'>Message:</h3>
               <p>{todo.message}</p>
             </div>
