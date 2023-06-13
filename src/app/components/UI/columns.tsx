@@ -40,13 +40,14 @@ function Column({ id, todos, index }: Props) {
                   snapshot.isDraggingOver ? 'bg-green-200 text-[#2E3840]' : 'bg-[#2E3840] text-white'
                 }`}
               >
+                <div>
                 <h2 className='flex justify-between'>
                     {idToColumnText[id]}
                     <span className=' text-slate-800 bg-gray-200 rounded-full py-1 px-2 text-sm font-bold'>
                         {!searchString ? todos.length : todos.filter(todo=>todo.title.toLowerCase().includes(searchString.toLowerCase())).length}
                     </span>
                 </h2>
-
+                </div>
                 <div className='space-y-2 py-2'>
                     {todos.map((todo,index)=>{
 
@@ -78,11 +79,7 @@ function Column({ id, todos, index }: Props) {
                     {provided.placeholder}
 
                     <div className='flex items-end justify-end p-2'>
-                        <button className='text-green-500 hover:text-green-600'>
-                            <BsPlusCircle
-                                className='h-10 w-10'
-                            />
-                        </button>
+
                     </div>
                 </div>
 

@@ -8,11 +8,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
     return (
-        <>
             <div>
                 <HeaderInfo title={metadata.title != null ? metadata.title.toString() : ''} bg_color='bg-[#393646]' text_color='text-[#ffffff]' />
             </div>      
-        </>
-
     );
 }

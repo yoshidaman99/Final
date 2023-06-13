@@ -115,7 +115,7 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
     if (todo.user) {
       handleUserName(todo.user);
     }
-  }, [getUserName, todo.user]);
+  }, [todo.user]);
 
 
   const handleDeleteComment = async (id : string) => {
@@ -140,9 +140,9 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
   return (
     <div className="bg-white space-y-2 drop-shadow-sm" {...draggableProps} {...dragHandleProps} ref={innerRef}>
 
-      <div className={`p-2 ${open ? 'min:h-72' : 'h-10'} z-0`} >
+      <div className={`${open ? 'min:h-72' : 'h-10'} z-0`} >
         <div>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center bg-slate-50/80 p-2 border-slate-400 border-t-2 h-10">
             <span>
               <div className="text-slate-600">{todo.type_Request}</div>
             </span>

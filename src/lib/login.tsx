@@ -12,13 +12,14 @@ import {
 } from 'firebase/firestore';
 import Cookies from 'universal-cookie';
 
+const cookie = new Cookies();
+
 const navigateToAddress = (address:string) => {
     window.location.href = address;
   };
 
 export const login  = async (email: string, password: string) => {
 
-    const cookie = new Cookies();
     const auth = getAuth();
 
     try {
@@ -50,10 +51,10 @@ export const login  = async (email: string, password: string) => {
           const userData = { id: id, email: userEmail, name: name, role: job_role };
 
           const expirationDate = new Date();
-          expirationDate.setDate(expirationDate.getDate() + 5);
+          expirationDate.setDate(expirationDate.getDate() + 10000000);
             // Save the user data to the cookie
-            cookie.set('user', JSON.stringify(userData), { expires: expirationDate  });
-          // Alternatively, you can use localStorage.setItem('user', JSON.stringify(userData));
+          cookie.set('user', JSON.stringify(userData), { expires: expirationDate  });
+          //localStorage.setItem('user', JSON.stringify(userData));
 
           navigateToAddress('/dashboard');
         }

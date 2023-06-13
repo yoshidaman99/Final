@@ -27,11 +27,11 @@ import {
 } from 'react-icons/hi2';
 
 interface LvlRole {
-    role: string;
+    role?: string;
 }
 
 
-const Sidebar: React.FC<LvlRole> = ({ role }) => {
+const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
   const [open, setOpen] = useState(true);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('');
