@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Sidebar from '@/app/components/sidebar';
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import Cookies from 'universal-cookie';
 import { CookiesProvider } from 'react-cookie';
@@ -12,9 +12,10 @@ type PageProps = {
   children: React.ReactNode;
 };
 
-const Layout: NextPage<PageProps> = ({ children}) => {
-  const router = useRouter();
+const Layout: NextPage<PageProps> = ({ children }) => {
   const [_role, setRole] = useState<string | undefined>(undefined);
+
+  const router = useRouter();
 
   useEffect(() => {
     const storedUser: any = cookies.get('user');
@@ -27,29 +28,17 @@ const Layout: NextPage<PageProps> = ({ children}) => {
   }, [router]);
 
   return (
-      <CookiesProvider cookies={cookies}>
-        <div className="flex flex-row justify-start">
-          <div>
-            <Sidebar role={_role} />
-          </div>
-          <div className="bg-slate-900 flex-1 z-0 h-fit min-h-screen pb-14">
-            {children}
-          </div>
+    <CookiesProvider cookies={cookies}>
+      <div className="flex flex-row justify-start">
+        <div>
+          <Sidebar role={_role} />
         </div>
-      </CookiesProvider>
+        <div className="bg-slate-900 flex-1 z-0 h-fit min-h-screen pb-14">
+          {children}
+        </div>
+      </div>
+    </CookiesProvider>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  // You can access the cookies from the incoming request using `context.req.cookies`
-  const cookiesFromRequest = context.req.cookies;
-
-  // Pass the cookies as props to the component
-  return {
-    props: {
-      cookiesFromRequest,
-    },
-  };
 };
 
 export default Layout;
