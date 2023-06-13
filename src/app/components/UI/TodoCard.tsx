@@ -141,8 +141,8 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
     <div className="bg-white space-y-2 drop-shadow-sm" {...draggableProps} {...dragHandleProps} ref={innerRef}>
 
       <div className={`${open ? 'min:h-72' : 'h-10'} z-0`} >
-        <div className='px-2'>
-          <div className="flex justify-between items-center bg-slate-50/80 p-2 border-slate-400 border-t-2 h-10">
+        <div className=''>
+          <div className="flex justify-between items-center bg-slate-50/80 p-1 border-slate-400 border-t-2 h-10">
             <span>
               <div className="text-slate-600">{todo.type_Request}</div>
             </span>
@@ -172,20 +172,20 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
         </div>
         {open && (
           <>
-            <div className='w-full h-44 z-10 mt-2 px-2 text-black'>
+            <div className='w-full h-44 z-10 mt-2 px-4 text-black'>
               <h3 className='mb-2 font-semibold'>Message:</h3>
               <p>{todo.message}</p>
             </div>
-              <div className='text-black'>
+              <div className='text-black px-2'>
                 <span>User:</span> <input value={userName} onChange={(e) => setUserName(e.target.value)} readOnly />
               </div>
 
 
-              <div className=" text-slate-900">
+              <div className=" text-slate-900 px-2">
                 {comments.map((comment, index) => (
                     <div key={index} className="flex items-start mb-4">
 
-                    <div className="flex-grow ring-2 p-2 m-2">
+                    <div className="flex-grow ring-2 p-2 mt-2">
                         <div className="flex items-center mb-1">
                         <p className="text-lg font-bold">{comment.name}</p>
                         <p className="text-gray-500 ml-2">{comment.role}</p>
@@ -201,16 +201,15 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
                     </div>
 
                 ))}
+              </div>
 
-
-        </div>
             <form onSubmit={handleSubmit}>
               <div className='text-black hidden'>
                 <input name='role' onChange={(e) => setRole(e.target.value)} value={todo.role} />
                 <input name='user' onChange={(e) => setUser(e.target.value)} value={todo.user} />
                 <input name='_id' onChange={(e) => set_id(e.target.value)} value={todo.$id} />
               </div>
-              <div className=' text-slate-800 mt-2'>
+              <div className=' text-slate-800 mt-2 p-2'>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
