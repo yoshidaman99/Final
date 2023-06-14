@@ -1,33 +1,25 @@
-import React from 'react';
-import { Metadata } from 'next';
+import ChatBox from "@/app/components/ChatBox"
+import SendMessage from "@/app/components/UI/SendMessage"
+import { AuthProvider } from '@/app/context/AuthContext';
 import HeaderInfo from '@/app/components/header_info';
 
-export const metadata: Metadata = {
-    title: 'Message Chat',
+const App = () => {
+  return (
+    <section className="containerWrap">
+    <div className="fixed w-full text-right"><HeaderInfo title={'Message Board'} bg_color='bg-[#F9DBBB]' text_color='text-[#2E3840]' /></div>
+        <div>
+        <AuthProvider>
+        <div className="flex-1 scroll-mt-350 px-8">
+        <ChatBox />
+        </div>
+        <div  className="containerWrap">
+        <SendMessage />
+        </div>
+        </AuthProvider>
+        </div>
+    </section>
+  );
 };
 
-export default function Page() {
-    return (
-        <section className=''>
-        <div>
-            <HeaderInfo title={metadata.title != null ? metadata.title.toString() : ''} bg_color='bg-[#4E6E81]' text_color='text-[#ffffff]' />
-        </div>
-            <div className="flex flex-row justify-start pb-56">
-            <div className='w-52 border-r-2 border-slate-200 mt-2'>
-            <aside>
-            </aside>
-            </div>
-            <div className="bg-blue-200 flex-1">
-            <div>
+export default App;
 
-
-
-            </div>
-            </div>
-            </div>
-
-        <div>
-        </div>
-        </section>
-    )
-}

@@ -30,7 +30,7 @@ const Layout: NextPage<PageProps> = ({ children }) => {
   return (
     <CookiesProvider cookies={cookies}>
       <div className="flex flex-row justify-start">
-        <div>
+        <div className='z-50'>
           <Sidebar role={_role} />
         </div>
         <div className="bg-slate-900 flex-1 z-0 h-fit min-h-screen pb-14">

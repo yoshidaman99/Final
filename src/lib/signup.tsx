@@ -1,4 +1,4 @@
-import {createUserWithEmailAndPassword,getAuth,} from 'firebase/auth';
+import {createUserWithEmailAndPassword,getAuth, updateProfile,} from 'firebase/auth';
 import {
   getFirestore,
   collection,
@@ -12,6 +12,9 @@ export const signup = async (email: string, password: string, f_name: string, l_
 
 try{
 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+await updateProfile(userCredential.user, {
+    displayName: f_name + ' ' + l_name
+  });
 const user = userCredential.user;
 
     if(user){

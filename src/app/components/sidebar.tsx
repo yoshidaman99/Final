@@ -261,7 +261,7 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
 
         <span>
           <BsArrowLeftShort
-          className={`z-10 text-[#2E3840] bg-white hover:ring-2 hover:text-4xl hover:bg-gray-100 text-3xl duration-300 rounded-full absolute ${
+          className={`z-10 text-[#2E3840] bg-white hover:ring-2 hover:text-4xl hover:bg-gray-100 text-3xl duration-300 fixed rounded-full ${
             open ? 'left-[330px]' : 'left-[65px]'
           } top-9 border border-dark-purple cursor-pointer ${
             !open && 'rotate-180'
