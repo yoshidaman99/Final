@@ -40,10 +40,14 @@ export default function CreateRequest(): React.JSX.Element {
     setMessage(value);
   }
 
-  const handleAddRequest  = async (e : React.FormEvent) => {
+  const handleAddRequest  = async (e : any) => {
+    
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const Role = formData.get('_role') as string;
+
     try{
-        addRequest(title,message,templateName, employee );
+        addRequest(title,message,templateName, Role );
     }catch (error){
 
     }
@@ -90,6 +94,7 @@ export default function CreateRequest(): React.JSX.Element {
             <div className='mt-2'>
               <h2>Employee:</h2>
               <input
+              name='_role'
               value={selectedRequestData.employeeAssign}
               onChange={(e)=>{handleEmployee(e.target.value)}}>
               </input>

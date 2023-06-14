@@ -28,7 +28,6 @@ export const login  = async (email: string, password: string) => {
 
       if (user) {
         const id: string = user.uid;
-        const name: string = user.displayName || '';
         const userEmail: string = user.email || '';
 
         // Get a reference to the Firestore database
@@ -47,6 +46,7 @@ export const login  = async (email: string, password: string) => {
 
           // Get the job role from the document
           const job_role = document.job_role;
+          let name = document.first_name + ' ' + document.first_name  
 
           const userData = { id: id, email: userEmail, name: name, role: job_role };
 

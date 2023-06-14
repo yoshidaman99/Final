@@ -4,6 +4,7 @@ import { DraggableProvidedDragHandleProps, DraggableProvidedDraggableProps } fro
 import { Bs0Square, Bs8SquareFill, BsBagCheck, BsChatSquare, BsCloudArrowDown, BsCode, BsSquareFill, BsXCircle } from 'react-icons/bs';
 import { useBoardStore } from '@/store/BoardStore';
 import {  getUserName, addComment, delComment, archiveComment, getComment } from '@/lib/todoAccess';
+import { useCookies } from 'react-cookie';
 
 type Props = {
   todo: Todo;
@@ -23,6 +24,42 @@ interface comment {
     $id: string,
   }
 
+function getUserIDFromArray(cookies: any): any {
+    for (const key in cookies) {
+      if (key === 'user' && cookies.hasOwnProperty(key)) {
+        const user = cookies[key];
+        if (user.hasOwnProperty('id')) {
+          return user.id;
+        }
+      }
+    }
+    return null;
+}
+
+function getUserNameFromArray(cookies: any): any {
+  for (const key in cookies) {
+    if (key === 'user' && cookies.hasOwnProperty(key)) {
+      const user = cookies[key];
+      if (user.hasOwnProperty('name')) {
+        return user.name;
+      }
+    }
+  }
+  return null;
+}
+
+function getUserRoleFromArray(cookies: any): any {
+  for (const key in cookies) {
+    if (key === 'user' && cookies.hasOwnProperty(key)) {
+      const user = cookies[key];
+      if (user.hasOwnProperty('role')) {
+        return user.role;
+      }
+    }
+  }
+  return null;
+}
+
 
 function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }: Props) {
   const deleteTodoInDB = useBoardStore((state) => state.deleteTodoInDB);
@@ -39,6 +76,8 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
   const [comments, setComments] = useState<comment[]>([]);
   const [__id,set__id] = useState('');
   const [___id,set___id] = useState('');
+
+  const [cookies] = useCookies(['user']);
 
   const handleToggleSidebar = async (id?: string) => {
     setOpen((prevOpen) => !prevOpen);
@@ -130,11 +169,14 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const updatedUser = formData.get('user') as string;
+    const updatedUser = getUserIDFromArray(cookies) as string;
     const updated_id = formData.get('_id') as string;
-    const updatedRole = formData.get('role') as string;
+    const updatedRole = getUserRoleFromArray(cookies) as string;
+    const updatedName = getUserNameFromArray(cookies) as string;
 
-    addComment(updated_id.toString(), updatedUser.toString(), message.toString(), userName.toString(), updatedRole.toString());
+    console.log(updatedUser)
+
+    addComment(updated_id.toString(), updatedUser, message.toString(), updatedName, updatedRole);
   };
 
   return (
@@ -172,12 +214,12 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
         </div>
         {open && (
           <>
-            <div className='w-full h-44 z-10 mt-2 px-4 text-black'>
+            <div className='w-full h-44 z-10 mt-2 px-2 text-black'>
               <h3 className='mb-2 font-semibold'>Message:</h3>
               <p>{todo.message}</p>
             </div>
               <div className='text-black px-2'>
-                <span>User:</span> <input value={userName} onChange={(e) => setUserName(e.target.value)} readOnly />
+                <span className=' font-semibold'>Created by:</span> <input value={userName} onChange={(e) => setUserName(e.target.value)} readOnly />
               </div>
 
 
@@ -185,7 +227,7 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
                 {comments.map((comment, index) => (
                     <div key={index} className="flex items-start mb-4">
 
-                    <div className="flex-grow ring-2 p-2 mt-2">
+                    <div className="flex-grow ring-2 rounded-sm p-2 mt-2">
                         <div className="flex items-center mb-1">
                         <p className="text-lg font-bold">{comment.name}</p>
                         <p className="text-gray-500 ml-2">{comment.role}</p>

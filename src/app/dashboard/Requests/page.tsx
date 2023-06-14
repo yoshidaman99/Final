@@ -30,7 +30,7 @@ export default function Request() {
 
     // Call the fetchData function to fetch request list data
     fetchData();
-  }, [cookies, userID]);
+  }, [cookies]);
 
   return (
     <section>
@@ -38,7 +38,7 @@ export default function Request() {
         <HeaderInfo title={'Request'} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
       </div>
 
-      <div className='h-7 w-full bg-slate-50'>
+      <div className='h-7 w-full p-6'>
         {requestList}
       </div>
     </section>

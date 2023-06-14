@@ -53,7 +53,6 @@ function Column({ id, todos, index }: Props) {
 
                             if(searchString && !todo.title.toLowerCase().includes(searchString.toLowerCase()))
                             return;
-                            console.log(todo)
                             return(
                             <Draggable
                                 key={todo.$id}

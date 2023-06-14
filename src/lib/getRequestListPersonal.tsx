@@ -1,8 +1,6 @@
 import { getFirestore , query , getDocs , collection, where } from 'firebase/firestore';
 import { initFirebase } from '@/firebase/firebaseApp';
 import Table from '@/app/components/UI/table';
-import { useCookies } from 'react-cookie';
-
 
 function getUserIDFromArray(cookies: any): any {
   for (const key in cookies) {
@@ -32,9 +30,7 @@ export const RequestList = async ( cookies : any ) => {
 
         // Get the snapshot of the query result
         const snapshot = await getDocs(userQuery);
-
-            console.log(snapshot);
-
+        console.log(userID)
         if (!snapshot.empty) {
           // Retrieve the first matching document
           const document =  snapshot.docs.map((doc) => {
@@ -43,11 +39,10 @@ export const RequestList = async ( cookies : any ) => {
           });
 
           const columns: string[]  = ["title","type_Request","status"];
+          console.log(userID)
 
           return (
-            <>
             <Table textCaption='' tableColumns={columns} dataColumn={document} />
-            </>
           );
 
         }

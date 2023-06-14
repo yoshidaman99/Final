@@ -22,7 +22,7 @@ export async function getRequestList() {
         return { ...data };
       });
 
-      const columns: string[] = ["id", "title", "status", "type_Request", "role", "user", "name"];
+      const columns: string[] = ["id", "title", "status", "type_Request", "role", "user"];
 
       return (
         <>
