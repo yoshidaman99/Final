@@ -5,7 +5,7 @@ import {
 import Cookies from 'universal-cookie';
 import { initFirebase } from '@/firebase/firebaseApp';
 
-const app = initFirebase();
+initFirebase();
 const auth = getAuth();
 const cookie = new Cookies();
 

@@ -38,28 +38,16 @@ function Page(): React.JSX.Element {
       setShowModal(true);
       signup(email, password, fName, lName, course, year);
       console.log('Signup Complete!');
-      window.location.reload();
     } else {
       // Passwords do not match, display an error message or handle it accordingly
       console.log('Password and confirm password do not match');
     }
   };
 
-  const handleModalConfirm = () => {
-    setShowModal(false);
-    try {
-      console.log('Signup Complete!');
-      const error = signup(email, password, fName, lName, course, year);
-      window.location.reload();
-      if (typeof error !== 'undefined') setEmailError(true);
-    } catch (error) {
-      console.log(error);
-    }
-
-  };
 
   const handleModalCancel = () => {
     setShowModal(false);
+    window.location.reload();
   };
 
   const isInputEmpty = () => {
@@ -181,6 +169,7 @@ function Page(): React.JSX.Element {
                   />
                 </div>
               </div>
+              <div>*this is unclickable if any question are not answered.</div>
 
               <button
                 type="submit"
@@ -245,7 +234,7 @@ function Page(): React.JSX.Element {
               <button
                 type="button"
                 className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                onClick={() => setShowModal(false)}
+                onClick={() => handleModalCancel()}
               >
                 Close
               </button>

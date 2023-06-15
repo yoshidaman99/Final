@@ -4,6 +4,7 @@ import {
     updateProfile,
   } from 'firebase/auth';
   import { getFirestore, collection, addDoc } from 'firebase/firestore';
+  import { initFirebase  } from '@/firebase/firebaseApp';
   
   export const signup = async (
     email: string,
@@ -13,6 +14,7 @@ import {
     course: string,
     year: string
   ) => {
+    initFirebase();
     const auth = getAuth();
   
     try {
@@ -46,10 +48,9 @@ import {
           year: year,
           // Add more fields as needed
         };
-  
+
         // Add the document to the collection
         const docRef = await addDoc(collectionRef, data);
-        window.location.reload();
       }
     } catch (error) {
       console.error(error);

@@ -4,10 +4,12 @@ import {
   collection,
   addDoc,
 } from 'firebase/firestore';
+import { initFirebase  } from '@/firebase/firebaseApp';
 
 export const signup = async (email: string, password: string, f_name: string, l_name:string,
     role: string, status: string, depart: string) =>{
 
+    initFirebase();
     const auth = getAuth();
 
 try{

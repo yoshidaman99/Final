@@ -38,27 +38,17 @@ function Page(): React.JSX.Element {
       setShowModal(true);
       signup(email, password, fName, lName, course, year);
       console.log('Signup Complete!');
-      window.location.reload();
+      //window.location.reload();
     } else {
       // Passwords do not match, display an error message or handle it accordingly
       console.log('Password and confirm password do not match');
     }
   };
 
-  const handleModalConfirm = () => {
-    setShowModal(false);
-    try {
-      console.log('Signup Complete!');
-      const error = signup(email, password, fName, lName, course, year);
-      if (typeof error !== 'undefined') setEmailError(true);
-    } catch (error) {
-      console.log(error);
-    }
-
-  };
 
   const handleModalCancel = () => {
     setShowModal(false);
+    window.location.reload();
   };
 
   const isInputEmpty = () => {
@@ -174,7 +164,7 @@ function Page(): React.JSX.Element {
                   />
                 </div>
               </div>
-
+                <div>The button will unclickable if any question are blank.</div>
               <button
                 type="submit"
                 className="px-4 py-2 bg-blue-500 text-white rounded"
@@ -234,22 +224,18 @@ function Page(): React.JSX.Element {
                   </div>
                 </div>
               </div>
-              <div>*this is unclickable if any question are not answered.</div>
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse items-end justify-items-end">
-
+              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse items-end">
               <button
-                type="submit"
-                className="float-right inline-flex justify-center rounded-md border border-transparent shadow-sm 
-                px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none 
-                focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                disabled={!!passwordError || isInputEmpty()}
+                type="button"
+                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                onClick={() => handleModalCancel()}
               >
-                Sign Up
+                Close
               </button>
+            </div>
             </div>
           </div>
         </div>
-      </div>
       )}
     </>
   );
