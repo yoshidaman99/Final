@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Sidebar from '@/app/components/sidebar';
+import Sidebar_ from '../components/student-sidebar';
 import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import Cookies from 'universal-cookie';
@@ -31,7 +32,7 @@ const Layout: NextPage<PageProps> = ({ children }) => {
     <CookiesProvider cookies={cookies}>
       <div className="flex flex-row justify-start">
         <div className='z-50'>
-          <Sidebar role={_role} />
+          {_role == 'student' ? <Sidebar_ role={_role} /> : <Sidebar role={_role} />}
         </div>
         <div className="bg-slate-900 flex-1 z-0 h-fit min-h-screen pb-14">
           {children}

@@ -50,7 +50,6 @@ function Page(): React.JSX.Element {
     try {
       console.log('Signup Complete!');
       const error = signup(email, password, fName, lName, course, year);
-      window.location.reload();
       if (typeof error !== 'undefined') setEmailError(true);
     } catch (error) {
       console.log(error);
@@ -76,13 +75,7 @@ function Page(): React.JSX.Element {
 
   return (
     <>
-      <section>
-        <div>
-          <HeaderInfo title="" bg_color="bg-[#2E3840]" text_color="text-[#ffffff]" />
-        </div>
-      </section>
-
-      <div className="text-slate-800 flex items-center justify-center p-4 mt-2">
+       <div className="text-slate-800 flex items-center justify-center p-4 mt-2">
         <div className="w-3/4 ring-2 py-3 px-4 rounded-md bg-slate-100">
           <div className="container mx-auto py-8">
             <h1 className="text-2xl font-bold mb-6">User Form</h1>
@@ -241,18 +234,22 @@ function Page(): React.JSX.Element {
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse items-end">
+              <div>*this is unclickable if any question are not answered.</div>
+              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse items-end justify-items-end">
+
               <button
-                type="button"
-                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
-                onClick={() => setShowModal(false)}
+                type="submit"
+                className="float-right inline-flex justify-center rounded-md border border-transparent shadow-sm 
+                px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none 
+                focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                disabled={!!passwordError || isInputEmpty()}
               >
-                Close
+                Sign Up
               </button>
-            </div>
             </div>
           </div>
         </div>
+      </div>
       )}
     </>
   );

@@ -49,42 +49,6 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
 
   const RoleLvl = [
     {
-      title: 'admin',
-      subitems: [
-        {
-          bg_color: '#2E3840',
-          text_color: '#ffffff',
-        },
-      ],
-    },
-    {
-      title: 'cashier',
-      subitems: [
-        {
-          bg_color: '#2E3840',
-          text_color: '#ffffff',
-        },
-      ],
-    },
-    {
-      title: 'registral',
-      subitems: [
-        {
-          bg_color: '#2E3840',
-          text_color: '#ffffff',
-        },
-      ],
-    },
-    {
-      title: 'teacher',
-      subitems: [
-        {
-          bg_color: '#2E3840',
-          text_color: '#ffffff',
-        },
-      ],
-    },
-    {
       title: 'student',
       subitems: [
         {
@@ -101,21 +65,6 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
       icon: <BsNewspaper />,
       link: '/dashboard/news',
       num: 2,
-      submenu: true,
-      submenuItems: [
-        {
-          title: 'Add News',
-          icon: <HiOutlineNewspaper />,
-          link: '/dashboard/news/add-news',
-          num: 3,
-        },
-        {
-          title: 'News List',
-          icon: <HiBarsArrowDown />,
-          link: '/dashboard/news/news-list',
-          num: 4,
-        },
-      ],
     },
     {
       title: 'Messages',
@@ -131,18 +80,6 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
       submenu: true,
       submenuItems: [
         {
-          title: 'Request List',
-          icon: <HiOutlineQueueList />,
-          link: '/dashboard/Requests/request-list',
-          num: 8,
-        },
-        {
-          title: 'Task Query',
-          icon: <HiOutlineRectangleGroup />,
-          link: '/dashboard/Requests/task-query',
-          num: 9,
-        },
-        {
           title: 'Create Request',
           icon: <HiOutlineSparkles />,
           link: '/dashboard/Requests/create-request',
@@ -155,33 +92,6 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
       icon: <BsFillFilePersonFill />,
       link: '/dashboard/accounts',
       num: 11,
-      submenu: true,
-      submenuItems: [
-        {
-          title: 'Add Admins',
-          icon: <HiOutlineUserCircle />,
-          link: '/dashboard/accounts/add-admin',
-          num: 12,
-        },
-        {
-          title: 'Admin List',
-          icon: <HiOutlineUserGroup />,
-          link: '/dashboard/accounts/admin-list',
-          num: 13,
-        },
-        {
-          title: 'Add Students',
-          icon: <HiOutlineUserPlus />,
-          link: '/dashboard/accounts/add-student',
-          num: 14,
-        },
-        {
-          title: 'Student List',
-          icon: <HiOutlineUsers />,
-          link: '/dashboard/accounts/student-list',
-          num: 15,
-        },
-      ],
     },
   ];
 

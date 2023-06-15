@@ -2,6 +2,7 @@ import {
   getAuth,
   UserCredential,
   signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -57,6 +58,10 @@ export const login  = async (email: string, password: string) => {
           //localStorage.setItem('user', JSON.stringify(userData));
 
           navigateToAddress('/dashboard');
+        }else{
+          await signOut(auth);
+          cookie.remove('user');
+          navigateToAddress('/');
         }
       }
     } catch (error) {
