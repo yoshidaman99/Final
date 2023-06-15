@@ -145,10 +145,8 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
       const namePromise = getUserName(id);
       const name = await namePromise;
 
-      const test: string | void = name;
-      if (typeof test === 'string') {
+      const test: any = name;
         setUserName(test);
-      }
     };
 
     if (todo.user) {
@@ -218,10 +216,11 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
               <h3 className='mb-2 font-semibold'>Message:</h3>
               <p>{todo.message}</p>
             </div>
-              <div className='text-black px-2'>
-                <span className=' font-semibold'>Created by:</span> <input value={userName} onChange={(e) => setUserName(e.target.value)} readOnly />
-              </div>
 
+              <div className='text-black px-2'>
+                <span className=' font-semibold'>Created by:</span> 
+                <input value={userName} onChange={(e) => setUserName(e.target.value)} readOnly />
+              </div>
 
               <div className=" text-slate-900 px-2">
                 {comments.map((comment, index) => (
