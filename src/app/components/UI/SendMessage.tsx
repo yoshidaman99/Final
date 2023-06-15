@@ -51,7 +51,7 @@ if (value.trim() === "") {
 };
 
 return (
-<div className="bg-gray-200 fixed bottom-12 py-8 shadow-lg left-0 right-0 containerWrap z-0">
+<div className="bg-gray-200 fixed bottom-12 py-8 px-4 shadow-lg left-0 right-0 containerWrap z-0">
   <form onSubmit={handleSendMessage} className="px-2 containerWrap flex pl-96">
     <input
       value={value}
@@ -61,7 +61,7 @@ return (
     />
     <button
       type="submit"
-      className="w-auto bg-gray-500 text-white rounded-r-lg px-5 text-sm"
+      className="w-auto bg-gray-500 text-white rounded-r-lg px-5 text-sm hover:bg-orange-300 hover:text-slate-900 hover:font-medium"
     >
       Send
     </button>

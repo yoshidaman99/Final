@@ -9,7 +9,7 @@ interface HeaderInfoProps {
 
   const HeaderInfo: React.FC<HeaderInfoProps> = ({ title , bg_color , text_color }) => {
     return (
-      <div className={`w-full text-center pt-2 pb-2 font-bold ${text_color} ${bg_color}`}>
+      <div className={`w-full h-9 text-center pt-2 pb-2 font-bold ${text_color} ${bg_color}`}>
             {title}
       </div>
     );

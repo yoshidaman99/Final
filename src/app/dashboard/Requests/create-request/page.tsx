@@ -91,7 +91,7 @@ export default function CreateRequest(): React.JSX.Element {
             <h3 id='request_text'>{selectedRequestData?.notes}</h3>
           </div>
           {selectedRequestData && (
-            <div className='mt-2'>
+            <div className='mt-2 hidden'>
               <h2>Employee:</h2>
               <input
               name='_role'
