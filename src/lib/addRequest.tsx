@@ -49,5 +49,5 @@ export const addRequest = async ( title: string, message: string, requestList: s
     };
 
     await updateDoc(requestRef, _data);
-    navigateToAddress('/dashboard/Requests/task-query');
+    navigateToAddress('/dashboard/Requests/');
  }
