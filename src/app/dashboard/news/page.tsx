@@ -48,14 +48,14 @@ export default function BlogPage() {
 
       <h1 className='pt-14 text-3xl font-bold text-center underline'>News Posts</h1>
 
-      <div className='grid gap-8 mt-8'>
+      <div className='grid gap-8 mt-8 px-5'>
         {blogPosts.map((post) => (
           <div key={post.id} className=''>
             <h2 className='text-2xl font-bold mb-2 text-center'>{post.title}</h2>
             <p className='text-center mb-4 text-white'>{post.message}</p>
             <div className="">
             <div className="flex items-center justify-center">
-                <Image src={post.imageUrl} alt="News Post" width={200} height={50}/>
+                <Image src={post.imageUrl} alt="News Post" width={300} height={80}/>
             </div>
             </div>
           </div>

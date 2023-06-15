@@ -35,7 +35,7 @@ const StudentLogin = () => {
                   required
                   autoComplete="username"
                   placeholder="Email"
-                  className="mt-4 p-2 w-full border-2 border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
+                  className="mt-4 text-black p-2 w-full border-2 border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
