@@ -42,7 +42,7 @@ import {
           const snapshot = await getDocs(userQuery);
   
           if (!snapshot.empty) {
-            
+
             const userData = { id: id, email: userEmail, name: name, role: 'student' };
   
             const expirationDate = new Date();
@@ -55,7 +55,7 @@ import {
           }else{
             await signOut(auth);
             cookie.remove('user');
-            navigateToAddress('/');
+            return "Invalid email or password";
           }
         }
       } catch (error) {

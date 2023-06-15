@@ -61,7 +61,7 @@ export const login  = async (email: string, password: string) => {
         }else{
           await signOut(auth);
           cookie.remove('user');
-          navigateToAddress('/');
+          return "Invalid email or password";
         }
       }
     } catch (error) {
