@@ -25,9 +25,7 @@ function checkBusinessHours( role : string ) {
   if (currentHour < 7 || currentHour >= 17) {
     return false;
   }
-
  
-
   // It's within business hours
   return true;
 }
@@ -98,7 +96,7 @@ const SendMessage = (): JSX.Element => {
               user: uid,
             });
 
-            if(!checkBusinessHours(updateRole)){
+            if(checkBusinessHours(updateRole)){
               await addDoc(childCollectionRef, {
                 message: "Hello! This is an automated message. We'll tackle your question or concern our hours: Monday to Friday, 9am - 5pm. Expect a reply within 24 hours. Thank you!",
                 name: displayName,
