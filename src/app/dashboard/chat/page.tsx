@@ -1,12 +1,13 @@
 'use client'
+'use client'
 import { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
+import  { StaticRouter }  from "react-router-dom/server";
 import { AuthProvider } from '@/app/context/AuthContext';
 import ChatBox from "@/app/components/ChatBox_2";
 import SendMessage from "@/app/components/UI/SendMessage_2";
 import HeaderInfo from '@/app/components/header_info';
 
-const Chat = () => {
+const Chat = (req : any ) => {
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.scrollTop = 0;
@@ -20,7 +21,7 @@ const Chat = () => {
       </div>
       <div>
         <h1 className='pt-14 text-3xl font-bold text-center underline'>MessageBoard</h1>
-        <BrowserRouter>
+        <StaticRouter location={req.url}>
           <AuthProvider>
             <div className="flex-1 scroll-mt-350 px-8">
               <ChatBox />
@@ -29,7 +30,7 @@ const Chat = () => {
               <SendMessage />
             </div>
           </AuthProvider>
-        </BrowserRouter>
+        </StaticRouter>
       </div>
     </section>
   );
