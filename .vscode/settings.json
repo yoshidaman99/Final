@@ -3,6 +3,7 @@
         "cjcrx",
         "firestore",
         "signup",
-        "tailwindcss"
+        "tailwindcss",
+        "todos"
     ]
 }

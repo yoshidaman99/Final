@@ -71,7 +71,7 @@ export default function NewsListPage() {
   return (
     <div>
       <div className="fixed w-full">
-        <HeaderInfo title={''} bg_color="bg-[#F9DBBB]" text_color="text-[#2E3840]" />
+        <HeaderInfo title={'News List'} />
       </div>
         <div className='p-5'>
       <h1 className="pt-14 text-3xl font-bold text-center underline">News List</h1>

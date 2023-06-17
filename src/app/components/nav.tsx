@@ -30,14 +30,14 @@ const Navigation: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className='bg-[#729967] px-10 h-10'>
       <nav className="flex">
-        <ul className="flex space-x-4">
+        <ul className="flex space-x-4 text-white mt-2">
           {navMenu.map((menuItem, index) => (
             <li key={index}
               className={`
                 ${currentPath === menuItem.location ? 'underline font-bold' : ''}
-                transition duration-300 ease-in-out hover:text-blue-500 hover:underline
+                transition duration-300 ease-in-out hover:text-orange-300 hover:underline
               `}
             >
               <Link href={menuItem.location}>

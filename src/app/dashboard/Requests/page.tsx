@@ -35,7 +35,7 @@ export default function Request() {
   return (
     <section>
       <div>
-        <HeaderInfo title={'Request'} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
+        <HeaderInfo title={'Request'}/>
       </div>
 
       <div className='h-7 w-full p-6'>

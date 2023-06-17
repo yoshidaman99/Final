@@ -17,6 +17,11 @@ interface Todo {
   message: string;
   user: string;
   image?: string;
+  contact?: string;
+  email?: string;
+  gender? : string;
+  birthdate?: string;
+  studentID?: string;
 }
 
 interface Column {
@@ -51,6 +56,8 @@ export const getTodosGroupedByColumn = async () => {
     }
 
     acc.get(todo.status)!.todo.push({
+      contact: todo.contact,
+      email: todo.email,
       $id: todo.$id,
       id: todo.id,
       title: todo.title,
@@ -59,6 +66,9 @@ export const getTodosGroupedByColumn = async () => {
       type_Request: todo.type_Request,
       message: todo.message,
       user: todo.user,
+      gender :  todo.gender,
+      birthdate: todo.birthdate,
+      studentID: todo.studentID,
       ...(todo.image && { image: todo.image }),
     });
 

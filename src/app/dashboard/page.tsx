@@ -11,8 +11,6 @@ const Page: NextPage = () => {
     <div>
       <HeaderInfo
         title={metadata.title != null ? metadata.title.toString() : ''}
-        bg_color="bg-[#393646]"
-        text_color="text-[#ffffff]"
       />
 
     <div className="flex items-center justify-center h-screen text-center">

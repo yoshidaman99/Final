@@ -52,8 +52,8 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
       title: 'student',
       subitems: [
         {
-          bg_color: '#7C99AC',
-          text_color: '#ffffff',
+          bg_color: '#88B77B',
+          text_color: '#FFA870',
         },
       ],
     },
@@ -123,9 +123,9 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
 
   return (
     <div>
-      <section className={`bg-[${bgColorSet}] ${open ? 'w-350' : 'w-20'} duration-300`}>
+      <section className={`bg-[#FFA870] ${open ? 'w-350' : 'w-20'} duration-300`}>
         <div
-          className={`px-4 pt-8 pl-4 fixed h-screen bg-[${bgColorSet}] font-bold text-[${textColorSet}] ${
+          className={`px-4 pt-8 pl-4 fixed h-screen bg-[#FFA870] font-bold text-[${textColorSet}] ${
             open ? 'w-350' : 'w-20'
           } duration-300`}
         >

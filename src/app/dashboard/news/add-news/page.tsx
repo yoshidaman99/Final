@@ -69,11 +69,7 @@ export default function Page() {
 
   return (
     <div>
-      <HeaderInfo
-        title={'add news'}
-        bg_color='bg-[#F9DBBB]'
-        text_color='text-[#2E3840]'
-      />
+      <HeaderInfo title={'Add news'}/>
 
       <div className='rounded border-2 border-gray-900 my-4 mx-20 p-5 bg-[#fafafa]'>
         <div>

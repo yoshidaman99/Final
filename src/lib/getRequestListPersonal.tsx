@@ -1,6 +1,6 @@
-import { getFirestore , query , getDocs , collection, where } from 'firebase/firestore';
+import { getFirestore, query, getDocs, collection, where } from 'firebase/firestore';
 import { initFirebase } from '@/firebase/firebaseApp';
-import Table from '@/app/components/UI/table';
+import { createChat } from '@/lib/addRequestChatGroup';
 
 function getUserIDFromArray(cookies: any): any {
   for (const key in cookies) {
@@ -14,41 +14,69 @@ function getUserIDFromArray(cookies: any): any {
   return null;
 }
 
+export const RequestList = async (cookies: any) => {
+  try {
+    const userID = getUserIDFromArray(cookies);
 
-export const RequestList = async ( cookies : any ) => {
-    try {
+    initFirebase();
+    const firestore = getFirestore();
 
-        const userID = getUserIDFromArray(cookies);
+    const collectionName = "todos";
+    // Create a query to retrieve the user documents with the matching user ID
+    const usersCollection = collection(firestore, collectionName);
+    const userQuery = query(usersCollection, where('user', '==', userID));
 
-        initFirebase()
-        const firestore = getFirestore();
+    // Get the snapshot of the query result
+    const snapshot = await getDocs(userQuery);
 
-        const newLocal = "todos";
-        // Create a query to retrieve the user document with the matching ID
-        const usersCollection = collection(firestore, newLocal);
-        const userQuery = query(usersCollection, where('user', '==', userID ));
+    if (!snapshot.empty) {
+      // Retrieve the matching documents
+      const documents = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return { ...data };
+      });
 
-        // Get the snapshot of the query result
-        const snapshot = await getDocs(userQuery);
-        console.log(userID)
-        if (!snapshot.empty) {
-          // Retrieve the first matching document
-          const document =  snapshot.docs.map((doc) => {
-            const data = doc.data();
-            return { ...data };
-          });
+      const columns: string[] = ["title", "message", "status", "Action"];
 
-          const columns: string[]  = ["title","type_Request","status"];
-          console.log(userID)
+      const handleAction = (id: string) => {
+        // Implement your action logic here
+        createChat(id);
+        console.log(`Perform action for document with ID: ${id}`);
+      };
 
-          return (
-            <Table textCaption='' tableColumns={columns} dataColumn={document} />
-          );
-
-        }
-
-      } catch (error) {
-
-        throw error;
-      }
+      return (
+        <table className="border-collapse">
+          <thead>
+            <tr>
+              {columns.map((column) => (
+                <th key={column} className="border border-gray-300 py-2 px-4">
+                  {column}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {documents.map((document) => (
+              <tr key={document.id}>
+                <td className="border border-gray-300 py-2 px-4">{document.title}</td>
+                <td className="border border-gray-300 py-2 px-4">{document.message}</td>
+                <td className="border border-gray-300 py-2 px-4">{document.status}</td>
+                <td className="border border-gray-300 py-2 px-4">
+                  <button
+                    onClick={() => handleAction(document.id)}
+                    className="bg-blue-500 text-white py-1 px-2 rounded
+                     hover:bg-lime-800"
+                  >
+                    Chat
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+    }
+  } catch (error) {
+    throw error;
+  }
 };

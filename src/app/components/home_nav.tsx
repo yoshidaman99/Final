@@ -26,9 +26,9 @@ const Navigation: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-gray-200 py-4 px-24">
+    <div className="py-4 px-24 bg-[#729967]">
       <nav className="flex justify-end">
-        <ul className="flex space-x-4 text-slate-900">
+        <ul className="flex space-x-4 text-white">
           {navMenu.map((menuItem, index) => (
             <li key={index} className={`
               ${currentPath === menuItem.location ? 'underline font-bold' : ''}

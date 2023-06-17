@@ -13,7 +13,7 @@ export default function adminList(): React.JSX.Element {
     return (
         <>
         <div>
-            <HeaderInfo title={metadata.title != null ? metadata.title.toString() : ''} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
+            <HeaderInfo title={metadata.title != null ? metadata.title.toString() : ''} />
         </div>
         <div className='m-4'>
             { getAdminList() }

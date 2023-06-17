@@ -20,6 +20,11 @@ interface Todo {
     type_Request: string,
     archive: boolean,
     image?: Image;
+    contact?: string,
+    email?: string,
+    gender? : string;
+    birthdate?: string;
+    studentID?: string;
 }
 
 type RoleColumns = 'Admin' | 'Cashier' | 'Registral'

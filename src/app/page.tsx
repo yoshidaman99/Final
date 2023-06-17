@@ -1,11 +1,49 @@
+'use client'
 import Nav from '@/app/components/home_nav';
 import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import { getFirestore, collection, query, orderBy, limit, getDocs } from 'firebase/firestore';
+import { initFirebase } from '@/firebase/firebaseApp';
+
+interface Post {
+  id: string;
+  title: string;
+  message: string;
+  imageUrl: string;
+}
+
+
 
 export default function Home() {
+  const [latestPosts, setLatestPosts] = useState<Post[]>([]);
+  initFirebase();
+
+  useEffect(() => {
+    // Fetch the latest posts from Firestore
+    const fetchLatestPosts = async () => {
+      const firestore = getFirestore();
+      const postsCollectionRef = collection(firestore, 'news');
+      const postsQuery = query(postsCollectionRef, orderBy('date', 'desc'), limit(2));
+
+      try {
+        const querySnapshot = await getDocs(postsQuery);
+        const posts: Post[] = querySnapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() } as Post;
+        });
+        setLatestPosts(posts);
+      } catch (error) {
+        console.log('Error fetching latest posts:', error);
+      }
+    };
+
+    fetchLatestPosts();
+  }, []);
+
+
   return (
     <>
       <Nav />
-      <main className="flex min-h-screen flex-col items-center justify-between px-24">
+      <main className="flex min-h-screen flex-col items-center justify-between px-24 mb-20">
       
         <div className='w-full'>
           <Image
@@ -46,6 +84,20 @@ export default function Home() {
           width={1200} // Set the desired width of the image
           height={400} // Set the desired height of the image
           />
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          {latestPosts.map((post) => (
+            <div key={post.id} className="p-4 border border-gray-300 rounded">
+              <h3 className="text-xl font-semibold">{post.title}</h3>
+              <div className="mt-2">
+                <Image src={post.imageUrl} width={1900} height={500} alt={post.title} className="w-full rounded" />
+              </div>
+              <p className="mt-2 text-gray-700">
+                {post.message.length > 50 ? `${post.message.slice(0, 50)}...` : post.message}
+              </p>
+            </div>
+          ))}
         </div>
 
       </main>

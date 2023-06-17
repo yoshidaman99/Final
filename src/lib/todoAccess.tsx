@@ -9,6 +9,8 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  orderBy,
+  Timestamp,
 } from 'firebase/firestore';
 
 export async function getUserName(id: string) {
@@ -52,7 +54,7 @@ export async function getUserName(id: string) {
     user: user,
     role: role,
     message: message,
-    date: Date.now(),
+    date:Timestamp.fromMillis(Date.now()),
   };
 
   // Add the document to the collection
@@ -70,6 +72,8 @@ export async function getComment(id: string) {
 
     // Get the snapshot of the query result
     const snapshot = await getDocs(userQuery);
+
+    console.info(snapshot)
 
     if (!snapshot.empty) {
       // Retrieve the first matching document

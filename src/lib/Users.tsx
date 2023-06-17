@@ -80,8 +80,6 @@ export const UserProvider = ({ children }: { children: any }) => {
       const userCredential: UserCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      console.log("sdasdas");
-
       if (user) {
         const id: string = user.uid;
         const name: string = user.displayName || '';

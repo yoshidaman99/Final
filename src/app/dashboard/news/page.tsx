@@ -40,18 +40,16 @@ export default function BlogPage() {
     <div>
       <div className='fixed w-full'>
         <HeaderInfo
-          title={''}
-          bg_color='bg-[#F9DBBB]'
-          text_color='text-[#2E3840]'
+          title={'News'}
         />
       </div>
 
-      <h1 className='pt-14 text-3xl font-bold text-center underline'>News Posts</h1>
+      <h1 className='pt-14 text-3xl text-txtadmin font-medium text-center underline'>News Posts</h1>
 
-      <div className='grid gap-8 mt-8 px-5'>
+      <div className='grid gap-8 mt-8'>
         {blogPosts.map((post) => (
-          <div key={post.id} className=''>
-            <h2 className='text-2xl font-bold mb-2 text-center'>{post.title}</h2>
+          <div key={post.id} className='m-6 ring-2 ring-stone-600 rounded bg-[#729967] p-10'>
+            <h2 className='text-2xl text-txtadmin font-medium mb-2 text-center'>{post.title}</h2>
             <p className='text-center mb-4 text-white'>{post.message}</p>
             <div className="">
             <div className="flex items-center justify-center">

@@ -7,6 +7,8 @@ import Column from '@/app/components/UI/columns';
 import SearchBar from '@/app/components/UI/search';
 
 
+
+
 export default function Page() {
   const [board, getBoard, setBoardState, updateTodoInDB] = useBoardStore((state) => [
     state.board,
@@ -21,7 +23,6 @@ export default function Page() {
       getBoard();
     }
   }, [getBoard]);
-
 
     const handleOnDragEnd = (result: DropResult) => {
         const { destination, source, type } = result;
@@ -98,7 +99,7 @@ export default function Page() {
       return (
         <section>
           <div>
-            <HeaderInfo title={'Query Task'} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
+            <HeaderInfo title={'Query Task'}/>
           </div>
           <div className='flex w-full items-center justify-center'>
             <div className='w-1/3'>

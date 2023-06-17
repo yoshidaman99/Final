@@ -66,7 +66,7 @@ function Page(): React.JSX.Element {
     <>
       <section>
         <div>
-          <HeaderInfo title="" bg_color="bg-[#2E3840]" text_color="text-[#ffffff]" />
+          <HeaderInfo title="" />
         </div>
       </section>
 

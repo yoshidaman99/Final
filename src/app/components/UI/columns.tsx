@@ -1,5 +1,4 @@
 import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { BsPlusCircle } from 'react-icons/bs';
 import TodoCard from '@/app/components/UI/TodoCard';
 import { useBoardStore } from '@/store/BoardStore';
 

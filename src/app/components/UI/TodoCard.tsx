@@ -218,8 +218,18 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
             </div>
 
               <div className='text-black px-2'>
-                <span className=' font-semibold'>Created by:</span> 
+                <span className=' font-semibold'>Created by: </span> 
                 <input value={userName} onChange={(e) => setUserName(e.target.value)} readOnly />
+              </div>
+
+              <div className='text-black px-2 p-2 ring-1 mt-2 mx-2'>
+                <span className=' font-semibold'>Contact Info: </span> 
+                <div className='text-black'>
+                  <h2>Mobile: {todo.contact}</h2>
+                  <h2>Email: {todo.email}</h2>
+                  <h2>Gender: {todo.gender}</h2>
+                  <h2>Birthdate: {todo.birthdate}</h2>
+                </div>
               </div>
 
               <div className=" text-slate-900 px-2">
@@ -239,7 +249,7 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
                     >
                         <BsXCircle/>
                     </button>
-                    </div>
+                    </div> 
 
                 ))}
               </div>

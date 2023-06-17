@@ -12,7 +12,7 @@ export default function requestList() {
     return (
         <section>
         <div>
-            <HeaderInfo title={metadata.title != null ? metadata.title.toString() : ''} bg_color='bg-[#2E3840]' text_color='text-[#ffffff]' />
+            <HeaderInfo title={metadata.title != null ? metadata.title.toString() : ''} />
         </div>
         <div className='p-4'>
             <div className='p-3 bg-slate-100 rounded'>
