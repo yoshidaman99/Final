@@ -49,6 +49,8 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
     await logout();
   };
 
+
+
   const RoleLvl = [
     {
       title: 'admin',
@@ -187,21 +189,36 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
     },
   ];
 
+function getUserIDFromArray(cookies: any): any {
+    for (const key in cookies) {
+      if (key === 'user' && cookies.hasOwnProperty(key)) {
+        const user = cookies[key];
+        if (user.hasOwnProperty('id')) {
+          return user.id;
+        }
+      }
+    }
+    return null;
+}
+
   const filterMenuItemsByRole = (role: string) => {
       return Menus;
   };
 
+  const [id,setID]  = useState('');
+  const [count,setCount] = useState(0);
+
   useEffect(() => {
     setCurrentPath(window.location.pathname);
-  }, [role]);
+  }, [id]);
 
   const handleLinkClick = (link: string, submenuLink?: string) => {
     setActiveLink(link);
     setActiveLink2(submenuLink ? submenuLink : '');
   };
- 
-  const textColorSet = RoleLvl.find((lvl) => lvl.title === role)?.subitems[0].text_color;
 
+  
+ 
   return (
     <div>
       <section className={` ${open ? 'w-350' : 'w-20'} bg-admin duration-300`}>
@@ -227,7 +244,6 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
             <span>Call us:<a href="tel:+632-8736-3912" className={`hover:text-amber-300`}> +632-8736-3912 </a></span>
           </div>
           </div>
-
           
           <nav>
             <ul>

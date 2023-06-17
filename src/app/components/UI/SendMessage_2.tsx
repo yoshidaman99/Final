@@ -12,6 +12,10 @@ function checkBusinessHours( role : string ) {
   const currentDay = currentDate.getDay();
   const currentHour = currentDate.getHours();
 
+  if( role != 'student'){
+    return true;
+  }
+
   // Check if it's Saturday or Sunday
   if (currentDay === 0 || currentDay === 6) {
     return false;
@@ -22,9 +26,7 @@ function checkBusinessHours( role : string ) {
     return false;
   }
 
-  if( role != 'student'){
-    return false;
-  }
+ 
 
   // It's within business hours
   return true;
@@ -104,6 +106,22 @@ const SendMessage = (): JSX.Element => {
                 user: 'System',
               });
             }
+ 
+
+            const notification = {
+                id: uid,
+                name: displayName,
+                date: serverTimestamp(),
+                view: false,
+            };
+
+            // Specify the collection where you want to add the document
+            const collectionRef = collection(db, "notification");
+
+            // Add the document to the collection
+            const docRef = await addDoc(collectionRef, notification);
+
+
 
             window.location.reload();
           }

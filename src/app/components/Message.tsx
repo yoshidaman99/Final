@@ -12,8 +12,6 @@ interface MessageProps {
 }
 
 const Message: React.FC<MessageProps> = ({ message, currentUser }) => {
-    console.log(message.uid)
-    console.log(currentUser.uid);
   return (
         <div className="my-2">
         <div className={`flex ${message.uid === currentUser.uid ? "justify-end" : "justify-start"}`}>

@@ -66,7 +66,6 @@ const ChatBox = (): JSX.Element => {
 
   useEffect(() => {
     let id = getUserIDFromArray(cookies);
-    console.log('id: '+ id);
     setUserID(id);
     fetchChatlog(requestId);
   }, [requestId, cookies]); // Include 'cookies' in the dependency array
