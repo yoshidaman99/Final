@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase/firebaseApp";
 import Toggle from "@/lib/toggl";
+import { doc, updateDoc } from "firebase/firestore";
 
 
 interface Chat {
@@ -46,31 +47,51 @@ const AdminChatPage = () => {
     setCurrentPage(pageNumber);
   };
 
+  const handleArchive = async (id: string) => {
+    try {
+      const chatRef = doc(db, "admin_chat", id);
+      await updateDoc(chatRef, {
+        archive: true
+      });
+      console.log("Chat archived successfully!");
+      // You can add any additional logic or display a success message here
+    } catch (error) {
+      console.error("Error archiving chat:", error);
+      // Handle any error that occurs during the update process
+    }
+  };
   // Pagination Logic
   const indexOfLastChat = currentPage * chatsPerPage;
   const indexOfFirstChat = indexOfLastChat - chatsPerPage;
   const currentChats = adminChats.slice(indexOfFirstChat, indexOfLastChat);
 
-  // Render Table Rows
-  const renderTableRows = () => {
-    return currentChats.map((chat) => (
-      <tr className=" border-2 border-slate-900 text-center" key={chat.id}>
-        <td>{chat.id}</td>
-        <td>{chat.requestId}</td>
-        {/* Add more columns as needed */}
-        <td>{chat.name}</td>
-        <td>
+// Render Table Rows
+const renderTableRows = () => {
+  return currentChats.map((chat) => (
+    <tr className="border-2 border-slate-900 text-center" key={chat.id}>
+      <td>{chat.id}</td>
+      <td>{chat.requestId}</td>
+      {/* Add more columns as needed */}
+      <td>{chat.name}</td>
+      <td>
         <button
           onClick={() => handleAction(chat.requestId)}
-          className="bg-blue-500 text-white py-1 px-2 rounded
-                     hover:bg-lime-800 my-2"
+          className="bg-blue-500 text-white py-1 px-2 rounded hover:bg-lime-800 my-2"
         >
-            View Details
+          View Details
         </button>
-        </td>
-      </tr>
-    ));
-  };
+      </td>
+      <td>
+        <button
+          onClick={() => handleArchive(chat.requestId)}
+          className="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-800 my-2"
+        >
+          Archive
+        </button>
+      </td>
+    </tr>
+  ));
+};
 
   // Render Pagination Links
   const renderPaginationLinks = () => {
@@ -108,6 +129,7 @@ const AdminChatPage = () => {
         <th className="py-2 px-4 border">Name</th>
         {/* Add more table headers as needed */}
         <th className="py-2 px-4 border">Actions</th>
+        <th className="py-2 px-4 border"> Archive </th>
       </tr>
     </thead>
     <tbody>{renderTableRows()}</tbody>
