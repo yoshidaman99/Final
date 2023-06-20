@@ -42,6 +42,9 @@ import {
           const snapshot = await getDocs(userQuery);
   
           if (!snapshot.empty) {
+            // Retrieve the first matching document
+            const document = snapshot.docs[0].data();
+            let name = document.first_name + ' ' + document.last_name;
 
             const userData = { id: id, email: userEmail, name: name, role: 'student' };
   

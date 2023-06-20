@@ -47,7 +47,7 @@ export const login  = async (email: string, password: string) => {
 
           // Get the job role from the document
           const job_role = document.job_role;
-          let name = document.first_name + ' ' + document.first_name  
+          let name = document.first_name + ' ' + document.last_name;
 
           const userData = { id: id, email: userEmail, name: name, role: job_role };
 

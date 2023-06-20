@@ -165,10 +165,6 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
       handleToggleSidebar();
   }
 
-  const getEmail : any = (email: string) => {
-    sendEmail(email);
-  };
-
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -230,7 +226,6 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
               <div className='text-black px-2 p-2 ring-1 mt-2 mx-2'>
                 <span className=' font-semibold'>Contact Info: </span> 
                 <div className='text-black'>
-                  {todo.status == 'done' && (getEmail(todo.email))}
                   <h2>Mobile: {todo.contact}</h2>
                   <h2>Email: {todo.email}</h2>
                   <h2>Gender: {todo.gender}</h2>
