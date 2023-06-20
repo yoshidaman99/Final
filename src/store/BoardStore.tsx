@@ -3,6 +3,7 @@ import { getStorage, ref, deleteObject } from 'firebase/storage';
 import { create } from 'zustand';
 import { initFirebase } from '@/firebase/firebaseApp';
 import { getTodosGroupedByColumn } from '@/lib/getTodosGroupedByColumn';
+import { sendEmail } from "@/lib/sendEmail";
 
 
 interface Column {

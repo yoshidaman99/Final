@@ -9,6 +9,8 @@ import { Josefin_Slab } from "next/font/google";
 import { getAuth } from "@firebase/auth";
 
 
+
+
 async function checkBusinessHours( role : string ) {
   const currentDate = new Date();
   const currentDay = currentDate.getDay();
@@ -95,7 +97,7 @@ const SendMessage =  (): JSX.Element => {
     if (value.trim() === "") {
       alert("Enter valid message!");
       return;
-}
+    }
 
     try {
       const cookies = new Cookies();
@@ -138,6 +140,7 @@ const SendMessage =  (): JSX.Element => {
           const snapshot = await getDocs(userQuery);
           
           let jobRole : string;
+          let email : string = '';
 
           if (!snapshot.empty) {
             // Retrieve the first matching document
@@ -148,6 +151,9 @@ const SendMessage =  (): JSX.Element => {
 
             jobRole = 'student';
           }
+
+
+
           
 
             if(await checkBusinessHours(jobRole)){

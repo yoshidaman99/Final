@@ -50,8 +50,6 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
     await logout();
   };
 
-
-
   const RoleLvl = [
     {
       title: 'admin',

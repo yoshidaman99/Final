@@ -94,7 +94,7 @@ export default function Page(): React.JSX.Element {
 
           <div className='py-2 px-3 ring-2 rounded mb-4'>
 
-                <h2 className="text-xl font-bold mb-3">Login Credencial</h2>
+                <h2 className="text-xl font-bold mb-3">Login Credential</h2>
 
                 <div className="mb-4">
                 <label
@@ -197,7 +197,7 @@ export default function Page(): React.JSX.Element {
                 focus:ring-indigo-500 focus:border-indigo-500">
                 <option value="admin">Admin</option>
                 <option value="teacher">Teacher</option>
-                <option value="registral">Registral</option>
+                <option value="registrar">Registrar</option>
                 <option value="cashier">Cashier</option>
                 </select>
             </div>
