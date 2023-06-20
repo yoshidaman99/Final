@@ -1,20 +1,23 @@
 'use client'
-import { useEffect } from "react";
 import { AuthProvider } from "@/app/context/AuthContext";
 import ChatBox from "@/app/components/ChatBox_2";
 import SendMessage from "@/app/components/UI/SendMessage_2";
 import HeaderInfo from "@/app/components/header_info";
 import { BrowserRouter } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const Chat = (req: any) => {
+const Chat = () => {
+
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.documentElement.scrollTop = 0;
-    }
+    setIsClient(true);
   }, []);
 
   return (
-    <section className="containerWrap">
+    <>
+
+    <div>
       <div className="fixed w-full text-right">
         <HeaderInfo title={"Admin Chat"} />
       </div>
@@ -25,8 +28,10 @@ const Chat = (req: any) => {
         {typeof document !== "undefined" && (
           <BrowserRouter>
             <AuthProvider>
-              <div className="flex-1 scroll-mt-350 px-8">
+              <div className="flex-1 scroll-mt-350 px-8 pb-24">
+              {isClient && 
                 <ChatBox />
+              }  
               </div>
               <div className="containerWrap">
                 <SendMessage />
@@ -35,7 +40,9 @@ const Chat = (req: any) => {
           </BrowserRouter>
         )}
       </div>
-    </section>
+      </div>
+
+    </>
   );
 };
 

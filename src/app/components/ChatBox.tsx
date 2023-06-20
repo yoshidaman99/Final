@@ -53,6 +53,7 @@ const ChatBox = (): JSX.Element => {
                       uid: message.id,
                       name: message.name,
                       text: message.content,
+                      date: message.createdAt
                   }} currentUser={{
                       uid: userID
                   }}            />

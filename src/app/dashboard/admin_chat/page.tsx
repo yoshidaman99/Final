@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/firebase/firebaseApp";
+import Toggle from "@/lib/toggl";
 
 
 interface Chat {
@@ -91,6 +92,11 @@ const AdminChatPage = () => {
 
   return (
 <div className="container mx-auto py-8">
+<span>
+  Enable the Auto Reply.
+  <Toggle/>
+</span>
+   
   <h1 className="text-2xl font-bold mb-4">Admin Chat</h1>
   <table className="w-full border-collapse">
     <thead>

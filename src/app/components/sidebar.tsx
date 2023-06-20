@@ -4,7 +4,8 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import {
   BsNewspaper,
-  BsMessenger,
+  BsFillChatRightTextFill,
+  BsFillClipboardFill,
   BsLayoutSidebarInset,
   BsFillFilePersonFill,
   BsFillReplyFill,
@@ -122,8 +123,29 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
       ],
     },
     {
+      title: 'Course',
+      icon: <BsFillClipboardFill color='#88b77b' />,
+      link: '/dashboard/Course',
+      num: 2,
+      submenu: true,
+      submenuItems: [
+        {
+          title: 'Add Course',
+          icon: <HiOutlineNewspaper color='#88b77b' />,
+          link: '/dashboard/Course/add-course',
+          num: 3,
+        },
+        {
+          title: 'Course List',
+          icon: <HiBarsArrowDown color='#88b77b' />,
+          link: '/dashboard/Course/course-list',
+          num: 4,
+        },
+      ],
+    },
+    {
       title: 'Messages',
-      icon: <BsMessenger color='#88b77b' />,
+      icon: <BsFillChatRightTextFill color='#88b77b' />,
       link: '/dashboard/messages',
       num: 5,
     },
@@ -145,6 +167,12 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
           icon: <HiOutlineQueueList color='#88b77b'  />,
           link: '/dashboard/Requests/request-list',
           num: 8,
+        },
+        {
+          title: 'Request Daily',
+          icon: <HiOutlineQueueList color='#88b77b'  />,
+          link: '/dashboard/Requests/request-list-daily',
+          num: 10,
         },
         {
           title: 'Task Query',

@@ -12,10 +12,15 @@ interface Post {
   imageUrl: string;
 }
 
-
+interface Course {
+  id: string;
+  title: string;
+  message: string;
+}
 
 export default function Home() {
   const [latestPosts, setLatestPosts] = useState<Post[]>([]);
+  const [course, setCourse] = useState<Course[]>([]);
   initFirebase();
 
   useEffect(() => {
@@ -36,6 +41,24 @@ export default function Home() {
       }
     };
 
+        // Fetch the latest posts from Firestore
+        const fetchCourse = async () => {
+          const firestore = getFirestore();
+          const postsCollectionRef = collection(firestore, 'course');
+          const postsQuery = query(postsCollectionRef, orderBy('date', 'desc'), limit(2));
+    
+          try {
+            const querySnapshot = await getDocs(postsQuery);
+            const posts: Post[] = querySnapshot.docs.map((doc) => {
+              return { id: doc.id, ...doc.data() } as Post;
+            });
+            setCourse(posts);
+          } catch (error) {
+            console.log('Error fetching latest posts:', error);
+          }
+        };
+
+    fetchCourse();
     fetchLatestPosts();
   }, []);
 
@@ -89,12 +112,23 @@ export default function Home() {
         <div className="grid grid-cols-2 gap-4">
           {latestPosts.map((post) => (
             <div key={post.id} className="p-4 border border-gray-300 rounded">
-              <h3 className="text-xl font-semibold">{post.title}</h3>
               <div className="mt-2">
                 <Image src={post.imageUrl} width={1900} height={500} alt={post.title} className="w-full rounded" />
               </div>
+              <h3 className="text-xl font-semibold">{post.title}</h3>
               <p className="mt-2 text-gray-700">
-                {post.message.length > 50 ? `${post.message.slice(0, 50)}...` : post.message}
+                {post.message.length > 250 ? `${post.message.slice(0, 250)}...` : post.message}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-4 gap-4">
+          {course.map((post) => (
+            <div key={post.id} className="p-4 border border-gray-300 rounded">
+              <h3 className="text-xl font-semibold">{post.title}</h3>
+              <p className="mt-2 text-gray-700">
+                {post.message.length > 150 ? `${post.message.slice(0, 150)}...` : post.message}
               </p>
             </div>
           ))}

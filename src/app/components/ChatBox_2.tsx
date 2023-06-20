@@ -73,12 +73,12 @@ const ChatBox = (): JSX.Element => {
   useEffect(scrollToBottom, [messages]);
 
   return (
-    <div className="pb-44 pt-20 containerWrap">
+    <>
       {messages.map((message) => (
-        <Message key={message.user} message={{ uid: message.user, name: message.name, text: message.message }} currentUser={{ uid: userID }} />
+        <Message key={message.user} message={{ uid: message.user, name: message.name, text: message.message, date: message.createdAt }} currentUser={{ uid: userID }} />
       ))}
       <div ref={messagesEndRef}></div>
-    </div>
+    </>
   );
 };
 

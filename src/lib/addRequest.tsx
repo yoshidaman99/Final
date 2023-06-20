@@ -7,6 +7,7 @@ import {
   addDoc,
   updateDoc,
   doc,
+  Timestamp,
 } from 'firebase/firestore';
 
 const navigateToAddress = (address: string) => {
@@ -51,6 +52,7 @@ export const addRequest = async (
     gender: gender,
     birthdate: birthdate,
     studentId: studentId,
+    startDate:Timestamp.fromMillis(Date.now()),
   };
 
   // Add the document to the collection

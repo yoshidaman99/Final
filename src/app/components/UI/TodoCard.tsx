@@ -6,6 +6,7 @@ import { useBoardStore } from '@/store/BoardStore';
 import {  getUserName, addComment, delComment, archiveComment, getComment } from '@/lib/todoAccess';
 import { useCookies } from 'react-cookie';
 
+
 type Props = {
   todo: Todo;
   index: number;
@@ -14,6 +15,7 @@ type Props = {
   draggableProps: DraggableProvidedDraggableProps;
   dragHandleProps: DraggableProvidedDragHandleProps | null | undefined;
 };
+
 
 interface comment {
     message : string,
@@ -152,7 +154,7 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
     if (todo.user) {
       handleUserName(todo.user);
     }
-  }, [todo.user]);
+  }, [todo, todo.user]);
 
 
   const handleDeleteComment = async (id : string) => {
@@ -171,8 +173,6 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
     const updated_id = formData.get('_id') as string;
     const updatedRole = getUserRoleFromArray(cookies) as string;
     const updatedName = getUserNameFromArray(cookies) as string;
-
-    console.log(updatedUser)
 
     addComment(updated_id.toString(), updatedUser, message.toString(), updatedName, updatedRole);
   };
@@ -229,6 +229,12 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
                   <h2>Email: {todo.email}</h2>
                   <h2>Gender: {todo.gender}</h2>
                   <h2>Birthdate: {todo.birthdate}</h2>
+                  {todo.startDate && (
+                    <h2>Date Created: {new Date(todo.startDate.seconds * 1000).toLocaleDateString()}</h2>
+                )}
+                {todo.completedAt && (
+                  <h2>Date Completed: {new Date(todo.completedAt.seconds * 1000).toLocaleDateString()}</h2>
+                )}
                 </div>
               </div>
 

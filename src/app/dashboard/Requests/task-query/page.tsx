@@ -6,9 +6,6 @@ import { DragDropContext, DropResult, Draggable, Droppable } from 'react-beautif
 import Column from '@/app/components/UI/columns';
 import SearchBar from '@/app/components/UI/search';
 
-
-
-
 export default function Page() {
   const [board, getBoard, setBoardState, updateTodoInDB] = useBoardStore((state) => [
     state.board,

@@ -1,6 +1,6 @@
 import { initFirebase } from '@/firebase/firebaseApp';
 import { getAuth } from 'firebase/auth';
-import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs, Timestamp } from 'firebase/firestore';
 
 // Initialize Firebase app
 initFirebase(); // Make sure to implement the `initFirebase` function to initialize Firebase
@@ -22,6 +22,8 @@ interface Todo {
   gender? : string;
   birthdate?: string;
   studentID?: string;
+  startDate?: Timestamp;
+  completedAt?:  Timestamp;
 }
 
 interface Column {
@@ -69,6 +71,8 @@ export const getTodosGroupedByColumn = async () => {
       gender :  todo.gender,
       birthdate: todo.birthdate,
       studentID: todo.studentID,
+      startDate: todo.startDate,
+      completedAt: todo.completedAt,
       ...(todo.image && { image: todo.image }),
     });
 

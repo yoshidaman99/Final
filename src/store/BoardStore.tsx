@@ -1,4 +1,4 @@
-import { getFirestore, collection, query, where, addDoc , updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, query, where, addDoc , updateDoc, deleteDoc, doc, Timestamp } from 'firebase/firestore';
 import { getStorage, ref, deleteObject } from 'firebase/storage';
 import { create } from 'zustand';
 import { initFirebase } from '@/firebase/firebaseApp';
@@ -40,10 +40,24 @@ export const useBoardStore = create<BoardState>((set, get) => {
     setBoardState: (board) => set({ board }),
     updateTodoInDB: async (todo, columnId) => {
         const todoDocRef = doc(db, 'todos', todo.$id); // Assuming `todo.$id` represents the document ID
-        await updateDoc(todoDocRef, {
-          title: todo.title,
-          status: columnId,
-        });
+
+        if (columnId === 'done'){
+
+          await updateDoc(todoDocRef, {
+            title: todo.title,
+            status: columnId,
+            completedAt: Timestamp.fromMillis(Date.now()),
+          });
+
+        }else{
+
+          await updateDoc(todoDocRef, {
+            title: todo.title,
+            status: columnId,
+          });
+
+        }
+
       },
     deleteTodoInDB: async (taskIndex, todo, id) => {
       const todosCollectionRef = collection(db, 'todos');

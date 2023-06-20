@@ -9,22 +9,29 @@ interface Column {
     todo: Todo[]
 }
 
+
+interface Date {
+    seconds: number;
+  }
+
 interface Todo {
     id?: string;
     $id: string;
     title: string;
-    message: string,
+    message: string;
     status: TypedColumn;
     user: number;
     role?: string;
-    type_Request: string,
-    archive: boolean,
+    type_Request: string;
+    archive: boolean;
     image?: Image;
-    contact?: string,
-    email?: string,
+    contact?: string;
+    email?: string;
     gender? : string;
     birthdate?: string;
     studentID?: string;
+    startDate?: Date;
+    completedAt?: Date;
 }
 
 type RoleColumns = 'Admin' | 'Cashier' | 'Registral'
