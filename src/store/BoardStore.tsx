@@ -43,6 +43,9 @@ export const useBoardStore = create<BoardState>((set, get) => {
         const todoDocRef = doc(db, 'todos', todo.$id); // Assuming `todo.$id` represents the document ID
 
         if (columnId === 'done'){
+          
+          if(todo.email)
+          sendEmail(todo.email)
 
           await updateDoc(todoDocRef, {
             title: todo.title,
