@@ -8,6 +8,7 @@ import Toggle from "@/lib/toggl";
 interface Chat {
   id: string;
   requestId: string;
+  name: string;
   // Add more properties as needed
 }
 
@@ -58,6 +59,7 @@ const AdminChatPage = () => {
         <td>{chat.requestId}</td>
         {/* Add more columns as needed */}
         <td>
+        <td>{chat.name}</td>
         <button
           onClick={() => handleAction(chat.requestId)}
           className="bg-blue-500 text-white py-1 px-2 rounded
@@ -103,6 +105,7 @@ const AdminChatPage = () => {
       <tr>
         <th className="py-2 px-4 border">ID</th>
         <th className="py-2 px-4 border">Request ID</th>
+        <th className="py-2 px-4 border">Name</th>
         {/* Add more table headers as needed */}
         <th className="py-2 px-4 border">Actions</th>
       </tr>
