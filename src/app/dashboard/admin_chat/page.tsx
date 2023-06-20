@@ -58,8 +58,8 @@ const AdminChatPage = () => {
         <td>{chat.id}</td>
         <td>{chat.requestId}</td>
         {/* Add more columns as needed */}
-        <td>
         <td>{chat.name}</td>
+        <td>
         <button
           onClick={() => handleAction(chat.requestId)}
           className="bg-blue-500 text-white py-1 px-2 rounded
