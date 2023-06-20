@@ -83,7 +83,7 @@ const renderTableRows = () => {
       </td>
       <td>
         <button
-          onClick={() => handleArchive(chat.requestId)}
+          onClick={() => handleArchive(chat.id)}
           className="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-800 my-2"
         >
           Archive
