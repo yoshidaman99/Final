@@ -11,6 +11,7 @@ interface Todo {
   $id?: string;
   id?: string;
   title: string;
+  name: string;
   status: TypedColumn; // Update the type to TypedColumn
   role: string;
   type_Request: string;
@@ -60,6 +61,7 @@ export const getTodosGroupedByColumn = async () => {
     acc.get(todo.status)!.todo.push({
       contact: todo.contact,
       email: todo.email,
+      name: todo.name,
       $id: todo.$id,
       id: todo.id,
       title: todo.title,

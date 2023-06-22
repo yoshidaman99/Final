@@ -31,8 +31,8 @@ interface Todo {
     gender? : string;
     birthdate?: string;
     studentID?: string;
-    startDate: Date;
-    completedAt?: Date;
+    startDate: any;
+    completedAt?: any;
 }
 
 type RoleColumns = 'Admin' | 'Cashier' | 'Registral'

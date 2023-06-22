@@ -148,6 +148,8 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
       const namePromise = getUserName(id);
       const name = await namePromise;
 
+      console.log(todo)
+
       const test: any = name;
         setUserName(test);
     };
@@ -219,8 +221,8 @@ function TodoCard({ todo, index, id, innerRef, draggableProps, dragHandleProps }
             </div>
 
               <div className='text-black px-2'>
-                <span className=' font-semibold'>Created by: </span> 
-                <input value={userName} onChange={(e) => setUserName(e.target.value)} readOnly />
+                <span className=' font-semibold'>Created by: </span>
+                <input value={todo.name} onChange={(e) => setUserName(e.target.value)} readOnly />
               </div>
 
               <div className='text-black px-2 p-2 ring-1 mt-2 mx-2'>
