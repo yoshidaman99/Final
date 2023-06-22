@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import HeaderInfo from '@/app/components/header_info';
 import { db } from '@/firebase/firebaseApp';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { storage } from '@/firebase/firebaseApp';
 
 export default function Page() {
   const [title, setTitle] = useState('');
@@ -13,24 +11,8 @@ export default function Page() {
   const [imageUploaded, setImageUploaded] = useState(false);
 
   const handleFormSubmit = async () => {
-    // Retrieve the image file from the input field
-    const imageFileInput = document.getElementById('file-upload') as HTMLInputElement;
-    const imageFile : File | undefined = imageFileInput?.files?.[0];
-
-    if (!imageFile) {
-        // No file selected, handle this case accordingly
-        return;
-      }
-
-    // Create a reference to the storage location where you want to store the image
-    const storageRef = ref(storage, 'images/' + imageFile.name);
 
     try {
-      // Upload the image file to Firebase Storage
-      const snapshot = await uploadBytes(storageRef, imageFile);
-
-      // Obtain the download URL of the uploaded image
-      const imageUrl = await getDownloadURL(snapshot.ref);
 
       // Save the form data (including the image URL) to the Firestore database
       await addDoc(collection(db, 'course'), {

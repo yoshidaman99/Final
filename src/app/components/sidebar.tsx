@@ -121,22 +121,22 @@ const Sidebar: React.FC<LvlRole> = ({ role = '' }) => {
       ],
     },
     {
-      title: 'Course',
+      title: 'Announcement',
       icon: <BsFillClipboardFill color='#88b77b' />,
-      link: '/dashboard/Course',
+      link: '/dashboard/announcement',
       num: 2,
       submenu: true,
       submenuItems: [
         {
-          title: 'Add Course',
+          title: 'Add Announcement',
           icon: <HiOutlineNewspaper color='#88b77b' />,
-          link: '/dashboard/Course/add-course',
+          link: '/dashboard/announcement/add-announcement',
           num: 3,
         },
         {
-          title: 'Course List',
+          title: 'Announcement List',
           icon: <HiBarsArrowDown color='#88b77b' />,
-          link: '/dashboard/Course/course-list',
+          link: '/dashboard/announcement/announcement-list',
           num: 4,
         },
       ],

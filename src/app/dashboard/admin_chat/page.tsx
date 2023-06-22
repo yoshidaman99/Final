@@ -54,6 +54,7 @@ const AdminChatPage = () => {
         archive: true
       });
       console.log("Chat archived successfully!");
+      window.location.reload();
       // You can add any additional logic or display a success message here
     } catch (error) {
       console.error("Error archiving chat:", error);
@@ -114,7 +115,7 @@ const renderTableRows = () => {
   };
 
   return (
-<div className="container mx-auto py-8">
+<div className="container mx-auto py-8 m-5">
 <span>
   Enable the Auto Reply.
   <Toggle/>
