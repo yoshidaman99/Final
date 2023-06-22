@@ -1,13 +1,14 @@
+'use client'
 import React from 'react';
 import { Metadata } from 'next';
 import HeaderInfo from '@/app/components/header_info';
-import { getRequestList } from '@/lib/getRequestListPerDay';
+import { RequestList } from '@/lib/getRequestListPerDay';
+
 export const metadata: Metadata = {
     title: 'Request List',
 };
 
 export default function requestList() {
-
 
     return (
         <section>
@@ -20,7 +21,7 @@ export default function requestList() {
                        
                     </div>
                     <div>
-                       {getRequestList()}
+                       {RequestList()}
                     </div>
 
                 </div>

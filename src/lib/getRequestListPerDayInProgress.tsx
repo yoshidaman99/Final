@@ -6,7 +6,7 @@ import Chart from 'chart.js/auto';
 
 const ITEMS_PER_PAGE = 10; // Number of items to display per page
 
-export function RequestList() {
+export function RequestListInProgress() {
   const chartCanvasRef = useRef<HTMLCanvasElement>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [startAfterDoc, setStartAfterDoc] = useState<any>(null); // Keep track of the last document snapshot
@@ -22,7 +22,7 @@ export function RequestList() {
         const usersCollection = collection(firestore, newLocal);
         let userQuery = query(
           usersCollection,
-          where('archive', '==', false),
+          where('status', '==', 'inprogress'),
           limit(ITEMS_PER_PAGE) // Limit the number of items per page
         );
 
@@ -59,7 +59,7 @@ export function RequestList() {
             labels: dates,
             datasets: [
               {
-                label: 'Request Count',
+                label: 'Request In Progress Count',
                 data: requestCounts,
                 backgroundColor: 'rgba(75, 192, 192, 0.6)',
               },
