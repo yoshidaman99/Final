@@ -16,6 +16,7 @@ interface Date {
 
 interface Todo {
     id?: string;
+    name: string;
     $id: string;
     title: string;
     message: string;
@@ -30,7 +31,7 @@ interface Todo {
     gender? : string;
     birthdate?: string;
     studentID?: string;
-    startDate?: Date;
+    startDate: Date;
     completedAt?: Date;
 }
 

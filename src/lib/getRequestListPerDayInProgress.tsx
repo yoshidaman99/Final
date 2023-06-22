@@ -94,7 +94,7 @@ export function RequestListInProgress() {
           const lastDoc = snapshot.docs[snapshot.docs.length - 1];
           setStartAfterDoc(lastDoc);
         } else {
-          alert('No data available');
+          
         }
       } catch (error) {
         alert('Error retrieving data');

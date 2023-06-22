@@ -4,7 +4,7 @@ import {
     addDoc,
   } from 'firebase/firestore';
 
-  export const sendEmail = async ( email: string ) => {
+  export const sendEmail = async ( email: string, name : string, type : string, startDate : Date, endDate : Date ) => {
 
     // Create a reference to the Firestore database
     const firestore = getFirestore();
@@ -16,8 +16,10 @@ import {
     const data = {
       to: email,
       message: {
-        subject: 'Request Docs',
-        html: 'Your request has been completed!'
+        subject: 'Complete: ' + type,
+        html: "Hi, " + name + " you're Request on " + startDate + " was completed at " + endDate + "<br/>" +
+        "<br/>" +
+        "<a href='https://main.d3jchgbt43z6u9.amplifyapp.com/login/student'>Link Here.</a>"
       },
     };
   

@@ -44,8 +44,8 @@ export const useBoardStore = create<BoardState>((set, get) => {
 
         if (columnId === 'done'){
           
-          if(todo.email)
-          sendEmail(todo.email)
+          if(todo.email && todo.completedAt)
+          sendEmail(todo.email, todo.name, todo.type_Request, todo.startDate, todo.completedAt)
 
           await updateDoc(todoDocRef, {
             title: todo.title,
