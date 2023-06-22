@@ -1,16 +1,12 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { Metadata, NextPage } from 'next';
+import {  NextPage } from 'next';
 import HeaderInfo from '@/app/components/header_info';
 import { RequestList } from '@/lib/getRequestListDashboard';
 import { RequestListInProgress } from '@/lib/getRequestListPerDayInProgress';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
-
-export const metadata: Metadata = {
-  title: 'Dashboard',
-};
 
 const Page: NextPage = () => {
   const [student, setStudent] = useState(true);
