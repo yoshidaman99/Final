@@ -64,8 +64,8 @@ function Page(): React.JSX.Element {
   };
 
   return (
-    <>
-       <div className="text-slate-800 flex items-center justify-center p-4 mt-2">
+    <div className='py-10 bg-slate-500'>
+       <div className="text-slate-800 flex items-center justify-center p-4 mt-4 mb-10">
         <div className="w-3/4 ring-2 py-3 px-4 rounded-md bg-slate-100">
           <div className="container mx-auto py-8">
             <h1 className="text-2xl font-bold mb-6">User Form</h1>
@@ -237,7 +237,7 @@ function Page(): React.JSX.Element {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

@@ -109,7 +109,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 mt-4">
           {latestPosts.map((post) => (
             <div key={post.id} className="p-4 border border-gray-300 rounded">
               <div className="mt-2">
@@ -123,11 +123,15 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="grid grid-cols-4 gap-4">
+        <div className='w-full flex justify-start'>
+            <h2 className='my-2 text-xl font-bold'> Announcement: </h2>
+        </div>
+
+        <div className="grid grid-cols-4 gap-4 mt-4 w-full justify-start">
           {course.map((post) => (
             <div key={post.id} className="p-4 border border-gray-300 rounded">
               <h3 className="text-xl font-semibold">{post.title}</h3>
-              <p className="mt-2 text-gray-700">
+              <p className="mt-2 text-gray-700">  
                 {post.message.length > 150 ? `${post.message.slice(0, 150)}...` : post.message}
               </p>
             </div>

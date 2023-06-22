@@ -30,7 +30,7 @@ const Navigation: React.FC = () => {
   }, []);
 
   return (
-    <div className='bg-[#729967] px-10 h-10'>
+    <div className='bg-[#729967] px-10 h-10 w-full fixed top-0'>
       <nav className="flex">
         <ul className="flex space-x-4 text-white mt-2">
           {navMenu.map((menuItem, index) => (

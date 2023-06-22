@@ -32,8 +32,8 @@ const LoginAdminPage: React.FC = () => {
     };
 
     return (
-        <>
-            <div  className="flex justify-center mt-5">
+        <div className='h-screen py-20' style={{ backgroundImage: `url('/images/wallpaperflare.com_wallpaper.jpg')` }}>
+            <div  className="flex  justify-center">
                 <div  className="ring-offset-2 py-4 px-8 pb-8 border-4 border-gray2 bg-[#151D3B] rounded w-552 md:mt-4 xl:mt-10 drop-shadow-md">
 
                     <h1 className="text-center font-bold text-3xl text-white uppercase mb-2">
@@ -88,7 +88,7 @@ const LoginAdminPage: React.FC = () => {
 
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

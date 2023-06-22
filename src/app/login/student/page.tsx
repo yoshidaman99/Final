@@ -24,7 +24,7 @@ const StudentLogin = () => {
   };
 
   return (
-    <>
+    <div className='h-screen py-4' style={{ backgroundImage: `url('/images/wallpaperflare.com_wallpaper_1.jpg')` }}>
       <div className="flex justify-center mt-5">
         <div className="ring-4 ring-red-300 py-4 px-8 pb-5 border-4 border-gray2 bg-slate-100 rounded w-552 md:mt-4 xl:mt-10 drop-shadow-md">
           <h1 className="text-center text-slate-700 font-bold text-3xl uppercase mb-2">Login</h1>
@@ -74,7 +74,7 @@ const StudentLogin = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

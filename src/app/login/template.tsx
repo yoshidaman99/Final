@@ -7,10 +7,12 @@ export default function templateLogin(props: {
   return (
     <>
         <div className='h-screen'>
-        <div>
+        <div className=''>
             <Nav />
         </div>
-        <div> {props.children} </div>
+        <div>
+          {props.children} 
+        </div>
         </div>
     </>
   );
